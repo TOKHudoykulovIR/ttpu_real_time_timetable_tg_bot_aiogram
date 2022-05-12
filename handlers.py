@@ -11,6 +11,7 @@ import os
 
 def data(message):
     user_id = int(message.chat.id)
+    print(user_id)
     user_name = str(message.chat.full_name)
     user_text = str(message.text)
     time = datetime.datetime.now()
