@@ -33,7 +33,7 @@ async def parse(class_, call):
     driver.refresh()
     await call.message.answer("𝟹, 𝟸, 𝟷 ...")
     # time.sleep(2)
-    time.sleep(0.5)
+    time.sleep(1)
     print("refresh")
 
     classes_btn = driver.find_element(
@@ -41,7 +41,7 @@ async def parse(class_, call):
         value='/html/body/div[2]/div/div/div[1]/div/div/div[1]/div[1]/div[1]/span[1]')
     classes_btn.click()
 
-    # time.sleep(2)
+    time.sleep(1)
 
     classes = driver.find_elements(by=By.CSS_SELECTOR, value=".dropDownPanel.asc-context-menu a")
 
