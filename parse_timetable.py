@@ -21,16 +21,19 @@ async def parse(class_, call):
     chrome_options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
 
+    # driver = webdriver.Chrome(executable_path="/Users/tokhir/Documents/parsers/SeleniumDrivers/chromedriver2")
+
     driver.get("https://ttpu.edupage.org/timetable/")
     driver.implicitly_wait(15)
 
-    await call.message.answer("𝟹, 𝟸, 𝟷 ...")
     print("open")
     # to delete msg after some period of time  STEP-2
     # asyncio.create_task(delete_later(msg, 1))
 
     driver.refresh()
-    time.sleep(2)
+    await call.message.answer("𝟹, 𝟸, 𝟷 ...")
+    # time.sleep(2)
+    time.sleep(0.5)
     print("refresh")
 
     classes_btn = driver.find_element(
@@ -38,7 +41,7 @@ async def parse(class_, call):
         value='/html/body/div[2]/div/div/div[1]/div/div/div[1]/div[1]/div[1]/span[1]')
     classes_btn.click()
 
-    time.sleep(2)
+    # time.sleep(2)
 
     classes = driver.find_elements(by=By.CSS_SELECTOR, value=".dropDownPanel.asc-context-menu a")
 
