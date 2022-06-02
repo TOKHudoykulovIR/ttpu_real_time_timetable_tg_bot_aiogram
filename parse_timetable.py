@@ -58,7 +58,7 @@ async def parse(class_, call):
     # await call.message.answer("...")
     # asyncio.create_task(delete_later(msg, 1))
 
-    time.sleep(0.8)
+    time.sleep(0.2)
     driver.set_window_size(700, 770)
     driver.save_screenshot('image.png')
     driver.close()
