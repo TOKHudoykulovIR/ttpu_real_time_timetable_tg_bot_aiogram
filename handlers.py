@@ -192,7 +192,9 @@ async def first_lvl_btn(message: types.Message, state: FSMContext):
 9	 	X	 	 	Algorithms and Programming 1	6
 10	 	 	X	 	Drawing	6""", reply_markup=ReplyKeyboardRemove())
     elif message.text == "IT":
+        pass
     elif message.text == "CIE":
+        pass
 
 
 @dp.message_handler(state=FSMMenu.tel_number)
