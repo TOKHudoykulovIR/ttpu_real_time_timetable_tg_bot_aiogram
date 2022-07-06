@@ -154,11 +154,10 @@ async def course_catalog_btn(message: types.Message, state: FSMContext):
         await message.answer\
                 ("""
                 №   Subject   Credits
-                1	Mathematics	10
-                2	Chemistry	9
-                3	Physics 	8
-                4	Drawing	6
-                5	Computer science	5
+1	Mathematics	10
+2	Chemistry	9
+3	Physics 	8 4	Drawing	6
+                5	Computer science	5\n
                 6	English language (Technical)	18
                 7	History of Uzbekistan	4
                 8	Constitution of Republic of Uzbekistan	2
