@@ -2,7 +2,7 @@ from aiogram import types
 from aiogram.dispatcher.filters import Text
 from main import dp
 from keyboards import keyboard_years, keyboard_2020, keyboard_2019, keyboard_2018, cd_years, cd_2020, cd_2019, \
-    menu_keyboard, tel_numbers_keyboard, course_keyboard
+    menu_keyboard, tel_numbers_keyboard, course_keyboard, faculty_keyboard
 from aiogram.types import CallbackQuery, ReplyKeyboardRemove
 from parse_timetable import parse
 import datetime
@@ -47,7 +47,10 @@ async def send_welcome(message: types.Message):
 async def show_keyboard_levels(message: types.Message):
     user_id, user_name, user_text, time = data(message)
     await add_user(user_id, user_name, user_text, time)
-    await message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝚈𝙴𝙰𝚁 𝙾𝙵 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙾 𝚃𝙷𝙴 𝚄𝙽𝙸𝚅𝙴𝚁𝚂𝙸𝚃𝚈...', reply_markup=keyboard_years)
+    await message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝚈𝙴𝙰𝚁 𝙾𝙵 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙾 𝚃𝙷𝙴 𝚄𝙽𝙸𝚅𝙴𝚁𝚂𝙸𝚃𝚈...',
+                         reply_markup=keyboard_years)
+
+
 #  < < <
 
 
@@ -80,8 +83,12 @@ async def year_18(call: CallbackQuery):
 @dp.callback_query_handler(text_contains='cancel')
 async def cancel(call: CallbackQuery):
     # await call.answer('Cancel', show_alert=True)
-    await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝚈𝙴𝙰𝚁 𝙾𝙵 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙾 𝚃𝙷𝙴 𝚄𝙽𝙸𝚅𝙴𝚁𝚂𝙸𝚃𝚈...', reply_markup=keyboard_years)
+    await call.message.answer(
+        '𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝚈𝙴𝙰𝚁 𝙾𝙵 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙾 𝚃𝙷𝙴 𝚄𝙽𝙸𝚅𝙴𝚁𝚂𝙸𝚃𝚈...',
+        reply_markup=keyboard_years)
     await call.message.edit_reply_markup(reply_markup=None)
+
+
 #  < < <
 
 
@@ -119,6 +126,7 @@ class FSMMenu(StatesGroup):
     menu_category_selection = State()
     course_catalog = State()
     tel_number = State()
+    faculty = State()
 
 
 @dp.message_handler(commands=['menu'], state="*")
@@ -129,7 +137,6 @@ async def menu(message: types.Message):
 
 @dp.message_handler(state=FSMMenu.menu_category_selection)
 async def menu_categories(message: types.Message):
-    print("Hello")
     if message.text == 'Course Catalog 📋':
         await message.answer('▷▷▷', reply_markup=course_keyboard)
         await FSMMenu.course_catalog.set()
@@ -143,16 +150,37 @@ async def course_catalog_btn(message: types.Message, state: FSMContext):
     if message.text == "Back ⬅️":
         await message.answer("▷▷▷", reply_markup=menu_keyboard)
         await FSMMenu.menu_category_selection.set()
+    elif message.text == "PY":
+        await message.answer\
+                ("""
+                №   Subject   Credits
+                1	Mathematics	10
+                2	Chemistry	9
+                3	Physics 	8
+                4	Drawing	6
+                5	Computer science	5
+                6	English language (Technical)	18
+                7	History of Uzbekistan	4
+                8	Constitution of Republic of Uzbekistan	2
+                9	Economics	4
+                10	Russian Language	 
+                11	Physical training	 
+                Total	66
+                """, reply_markup=ReplyKeyboardRemove())
+        await state.finish()
     elif message.text == "1-ST LEVEL":
-        await state.finish()
+        await FSMMenu.faculty.set()
     elif message.text == "2-ND LEVEL":
-        await state.finish()
+        await FSMMenu.faculty.set()
     elif message.text == "3-RD LEVEL":
-        await state.finish()
+        await FSMMenu.faculty.set()
+
+
+# @dp.message_handler(state=)
 
 
 @dp.message_handler(state=FSMMenu.tel_number)
-async def turins_contacts_btn(message: types.Message, state: FSMContext):
+async def turin_s_contacts_btn(message: types.Message, state: FSMContext):
     if message.text == "Back ⬅️":
         await message.answer("▷▷▷", reply_markup=menu_keyboard)
         await FSMMenu.menu_category_selection.set()
@@ -168,4 +196,3 @@ async def turins_contacts_btn(message: types.Message, state: FSMContext):
     elif message.text == "HR management department":
         await message.answer("+998(71)246-20-53", reply_markup=ReplyKeyboardRemove())
         await state.finish()
-

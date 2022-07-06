@@ -91,6 +91,8 @@ menu_keyboard = ReplyKeyboardMarkup(
     keyboard=[
         [
             KeyboardButton(text="Course Catalog 📋"),
+        ],
+        [
             KeyboardButton(text="Turin's Contacts 📞"),
         ],
     ],
@@ -102,8 +104,14 @@ tel_numbers_keyboard = ReplyKeyboardMarkup(
     keyboard=[
         [
             KeyboardButton(text="Rector’s reception"),
+        ],
+        [
             KeyboardButton(text="Financial management department"),
+        ],
+        [
             KeyboardButton(text="Accounting department"),
+        ],
+        [
             KeyboardButton(text="HR management department"),
         ],
         [
@@ -118,8 +126,14 @@ course_keyboard = ReplyKeyboardMarkup(
     keyboard=[
         [
             KeyboardButton(text="PY"),
+        ],
+        [
             KeyboardButton(text="1-ST LEVEL"),
+        ],
+        [
             KeyboardButton(text="2-ND LEVEL"),
+        ],
+        [
             KeyboardButton(text="3-RD LEVEL"),
         ],
         [
@@ -130,3 +144,22 @@ course_keyboard = ReplyKeyboardMarkup(
     one_time_keyboard=False,
 )
 
+
+faculty_keyboard = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text="ME"),
+        ],
+        [
+            KeyboardButton(text="CIE"),
+        ],
+        [
+            KeyboardButton(text="IT"),
+        ],
+        [
+            KeyboardButton(text="Back ⬅️"),
+        ]
+    ],
+    resize_keyboard=True,
+    one_time_keyboard=False,
+)
