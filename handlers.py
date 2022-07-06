@@ -151,24 +151,24 @@ async def course_catalog_btn(message: types.Message, state: FSMContext):
         await message.answer("▷▷▷", reply_markup=menu_keyboard)
         await FSMMenu.menu_category_selection.set()
     elif message.text == "PY":
-        await message.answer\
-                ("""
+        await message.answer("""
                 №   Subject   Credits\n
-1   Mathematics     10
-2   Chemistry   9
-3   Physics     8 
-4   Drawing     6
-5   Computer science    5
-6   English language (Technical)	18
-7   History of Uzbekistan   4
-8   Constitution of Republic of Uzbekistan  2
-9   Economics	4
+1   Mathematics     ➓
+2   Chemistry   ➒
+3   Physics     ➑
+4   Drawing     ➏
+5   Computer science    ➎
+6   English language (Technical)	➊➑
+7   History of Uzbekistan   ➍
+8   Constitution of Republic of Uzbekistan  ➋
+9   Economics	➍
 10  Russian Language	 
 11  Physical training\n	 
-Total   66
+Total   ➏➏
                 """, reply_markup=ReplyKeyboardRemove())
         await state.finish()
     elif message.text == "1-ST LEVEL":
+        await message.answer("▷▷▷", reply_markup=faculty_keyboard)
         await FSMMenu.faculty.set()
     elif message.text == "2-ND LEVEL":
         await FSMMenu.faculty.set()
@@ -176,7 +176,23 @@ Total   66
         await FSMMenu.faculty.set()
 
 
-# @dp.message_handler(state=)
+@dp.message_handler(state=FSMMenu.faculty)
+async def first_lvl_btn(message: types.Message, state: FSMContext):
+    if message.text == "ME":
+        await message.answer("""
+            №	ME	IT	CIE	SUBJECTS	CREDITS
+1	X	X	X	 	Chemistry 	8
+2	X	X	X	 	Mathematical analysis I	10
+3	X	X	X	 	Computer science	8
+4	X	X	X	 	Linear algebra and geometry 1	6
+5	X	X	X	 	Linear algebra and geometry 2	4
+6	X	X	X	 	Physics I	10
+7	X	X	X	 	Mathematical analysis II	8
+8	X	 	 	 	Engineering Drawing	6
+9	 	X	 	 	Algorithms and Programming 1	6
+10	 	 	X	 	Drawing	6""", reply_markup=ReplyKeyboardRemove())
+    elif message.text == "IT":
+    elif message.text == "CIE":
 
 
 @dp.message_handler(state=FSMMenu.tel_number)
