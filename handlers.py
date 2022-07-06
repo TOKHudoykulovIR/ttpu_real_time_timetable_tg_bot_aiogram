@@ -189,13 +189,37 @@ async def first_lvl_btn(message: types.Message, state: FSMContext):
 6	    physics I	    🔟
 7	    math. analysis II	    8️⃣
 8	    engineering drawing 	6️⃣\n	 
-Total   52
+Total   5️⃣2️⃣
 """,
                              reply_markup=ReplyKeyboardRemove())
     elif message.text == "IT":
-        pass
+        await message.answer("""
+                    №	    subjects    	credits\n
+        1	    chemistry 	    8️⃣
+        2	    math. analysis I    	🔟
+        3	    computer science	    8️⃣
+        4	    lin. algebra and geometry I 	6️⃣
+        5	    lin. algebra and geometry II	    4️⃣
+        6	    physics I	    🔟
+        7	    math. analysis II	    8️⃣
+        8	    engineering drawing 	6️⃣\n	 
+        Total   5️⃣2️⃣
+        """,
+                             reply_markup=ReplyKeyboardRemove())
     elif message.text == "CIE":
-        pass
+        await message.answer("""
+                    №	    subjects    	credits\n
+        1	    chemistry 	    8️⃣
+        2	    math. analysis I    	🔟
+        3	    computer science	    8️⃣
+        4	    lin. algebra and geometry I 	6️⃣
+        5	    lin. algebra and geometry II	    4️⃣
+        6	    physics I	    🔟
+        7	    math. analysis II	    8️⃣
+        8	    engineering drawing 	6️⃣\n	 
+        Total   5️⃣2️⃣
+        """,
+                             reply_markup=ReplyKeyboardRemove())
 
 
 @dp.message_handler(state=FSMMenu.tel_number)
