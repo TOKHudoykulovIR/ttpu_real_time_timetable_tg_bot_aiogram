@@ -153,18 +153,19 @@ async def course_catalog_btn(message: types.Message, state: FSMContext):
     elif message.text == "PY":
         await message.answer\
                 ("""
-                №   Subject   Credits
-1	Mathematics	10
-2	Chemistry	9
-3	Physics 	8 4	Drawing	6
-                5	Computer science	5\n
-                6	English language (Technical)	18
-                7	History of Uzbekistan	4
-                8	Constitution of Republic of Uzbekistan	2
-                9	Economics	4
-                10	Russian Language	 
-                11	Physical training	 
-                Total	66
+                №   Subject   Credits\n
+1   Mathematics     10
+2   Chemistry   9
+3   Physics     8 
+4   Drawing     6
+5   Computer science    5
+6   English language (Technical)	18
+7   History of Uzbekistan   4
+8   Constitution of Republic of Uzbekistan  2
+9   Economics	4
+10  Russian Language	 
+11  Physical training\n	 
+Total   66
                 """, reply_markup=ReplyKeyboardRemove())
         await state.finish()
     elif message.text == "1-ST LEVEL":
