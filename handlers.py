@@ -180,17 +180,16 @@ Total   ➏➏
 async def first_lvl_btn(message: types.Message, state: FSMContext):
     if message.text == "ME":
         await message.answer("""
-            №	ME  	IT  	CIE	    subjects    	credits
-1	    x	    x	    x	 	Chemistry 	8
-2	    x	    x	    x	 	Math. analysis I	10
-3	    x	    x	    x	 	Computer science	8
-4	    x	    x	    x	 	Lin. algebra and geometry 1	6
-5	    x	    x	    x	 	Lin. algebra and geometry 2	4
-6	    x	    x	    x	 	Physics I	10
-7	    x	    x	    x	 	Math. analysis II	8
-8	    x	 	 	         	Engineering Drawing	6
-9	 	        x	    	 	Algorithms and Program. 1	6
-10	 	 	            x	 	Drawing	6""", reply_markup=ReplyKeyboardRemove())
+            №	subjects    	credits
+1	    Chemistry 	8
+2	    Math. analysis I	10
+3	    Computer science	8
+4	    Lin. algebra and geometry 1	6
+5	    Lin. algebra and geometry 2	4
+6	    Physics I	10
+7	    Math. analysis II	8
+8	    Engineering Drawing	6""",
+                             reply_markup=ReplyKeyboardRemove())
     elif message.text == "IT":
         pass
     elif message.text == "CIE":
