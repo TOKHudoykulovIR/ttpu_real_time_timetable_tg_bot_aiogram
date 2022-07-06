@@ -179,6 +179,7 @@ Total   ➏➏
 @dp.message_handler(state=FSMMenu.faculty)
 async def first_lvl_btn(message: types.Message, state: FSMContext):
     if message.text == "ME":
+        print("me catalog")
         await message.answer("""
             №	    subjects    	credits\n
 1	    chemistry 	    8️⃣
@@ -193,33 +194,9 @@ Total   5️⃣2️⃣
 """,
                              reply_markup=ReplyKeyboardRemove())
     elif message.text == "IT":
-        await message.answer("""
-                    №	    subjects    	credits\n
-        1	    chemistry 	    8️⃣
-        2	    math. analysis I    	🔟
-        3	    computer science	    8️⃣
-        4	    lin. algebra and geometry I 	6️⃣
-        5	    lin. algebra and geometry II	    4️⃣
-        6	    physics I	    🔟
-        7	    math. analysis II	    8️⃣
-        8	    engineering drawing 	6️⃣\n	 
-        Total   5️⃣2️⃣
-        """,
-                             reply_markup=ReplyKeyboardRemove())
+        pass
     elif message.text == "CIE":
-        await message.answer("""
-                    №	    subjects    	credits\n
-        1	    chemistry 	    8️⃣
-        2	    math. analysis I    	🔟
-        3	    computer science	    8️⃣
-        4	    lin. algebra and geometry I 	6️⃣
-        5	    lin. algebra and geometry II	    4️⃣
-        6	    physics I	    🔟
-        7	    math. analysis II	    8️⃣
-        8	    engineering drawing 	6️⃣\n	 
-        Total   5️⃣2️⃣
-        """,
-                             reply_markup=ReplyKeyboardRemove())
+        pass
 
 
 @dp.message_handler(state=FSMMenu.tel_number)
