@@ -1,4 +1,4 @@
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove, KeyboardButton
 from aiogram.utils.callback_data import CallbackData
 
 cd_years = CallbackData("yyyy", "year")
@@ -86,3 +86,47 @@ keyboard_2018 = InlineKeyboardMarkup(
     ],
     resize_keyboard=True
 )
+
+menu_keyboard = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text="Course Catalog 📋"),
+            KeyboardButton(text="Turin's Contacts 📞"),
+        ],
+    ],
+    resize_keyboard=True,
+    one_time_keyboard=False,
+)
+
+tel_numbers_keyboard = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text="Rector’s reception"),
+            KeyboardButton(text="Financial management department"),
+            KeyboardButton(text="Accounting department"),
+            KeyboardButton(text="HR management department"),
+        ],
+        [
+            KeyboardButton(text="Back ⬅️"),
+        ]
+    ],
+    resize_keyboard=True,
+    one_time_keyboard=False,
+)
+
+course_keyboard = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text="PY"),
+            KeyboardButton(text="1-ST LEVEL"),
+            KeyboardButton(text="2-ND LEVEL"),
+            KeyboardButton(text="3-RD LEVEL"),
+        ],
+        [
+            KeyboardButton(text="Back ⬅️"),
+        ]
+    ],
+    resize_keyboard=True,
+    one_time_keyboard=False,
+)
+

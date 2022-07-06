@@ -1,12 +1,16 @@
 from aiogram import types
 from aiogram.dispatcher.filters import Text
 from main import dp
-from keyboards import keyboard_years, keyboard_2020, keyboard_2019, keyboard_2018, cd_years, cd_2020, cd_2019
-from aiogram.types import CallbackQuery
+from keyboards import keyboard_years, keyboard_2020, keyboard_2019, keyboard_2018, cd_years, cd_2020, cd_2019, \
+    menu_keyboard, tel_numbers_keyboard, course_keyboard
+from aiogram.types import CallbackQuery, ReplyKeyboardRemove
 from parse_timetable import parse
 import datetime
 from sqlite import add_user, get_info
 import os
+
+from aiogram.dispatcher import FSMContext
+from aiogram.dispatcher.filters.state import State, StatesGroup
 
 
 def data(message):
@@ -83,7 +87,7 @@ async def cancel(call: CallbackQuery):
 
 async def parse_data(call):
     clicked_btn = call.data
-    await call.message.answer('𝚂𝙴𝙰𝚁𝙲𝙷𝙸𝙽𝙶🔎...')
+    await call.message.answer('𝚂𝙴𝙰𝚁𝙲𝙷𝙸𝙽𝙶🔎')
     await parse(clicked_btn[3:], call)
     await call.message.answer('⬇️ 𝚈𝙾𝚄𝚁 𝚃𝙸𝙼𝙴𝚃𝙰𝙱𝙻𝙴 ⬇️')
     await call.message.answer_photo(photo=open("image.png", "rb"))
@@ -109,3 +113,59 @@ async def groups_year_20(call: CallbackQuery):
     ]))
 async def groups_year_19(call: CallbackQuery):
     await parse_data(call)
+
+
+class FSMMenu(StatesGroup):
+    menu_category_selection = State()
+    course_catalog = State()
+    tel_number = State()
+
+
+@dp.message_handler(commands=['menu'], state="*")
+async def menu(message: types.Message):
+    await FSMMenu.menu_category_selection.set()
+    await message.answer("choose category ↘︎", reply_markup=menu_keyboard)
+
+
+@dp.message_handler(state=FSMMenu.menu_category_selection)
+async def menu_categories(message: types.Message):
+    print("Hello")
+    if message.text == 'Course Catalog 📋':
+        await message.answer('▷▷▷', reply_markup=course_keyboard)
+        await FSMMenu.course_catalog.set()
+    elif message.text == "Turin's Contacts 📞":
+        await message.answer("▷▷▷", reply_markup=tel_numbers_keyboard)
+        await FSMMenu.tel_number.set()
+
+
+@dp.message_handler(state=FSMMenu.course_catalog)
+async def course_catalog_btn(message: types.Message, state: FSMContext):
+    if message.text == "Back ⬅️":
+        await message.answer("▷▷▷", reply_markup=menu_keyboard)
+        await FSMMenu.menu_category_selection.set()
+    elif message.text == "1-ST LEVEL":
+        await state.finish()
+    elif message.text == "2-ND LEVEL":
+        await state.finish()
+    elif message.text == "3-RD LEVEL":
+        await state.finish()
+
+
+@dp.message_handler(state=FSMMenu.tel_number)
+async def turins_contacts_btn(message: types.Message, state: FSMContext):
+    if message.text == "Back ⬅️":
+        await message.answer("▷▷▷", reply_markup=menu_keyboard)
+        await FSMMenu.menu_category_selection.set()
+    elif message.text == "Rector’s reception":
+        await message.answer("+998(71)246-70-82", reply_markup=ReplyKeyboardRemove())
+        await state.finish()
+    elif message.text == "Financial management department":
+        await message.answer("+998(71)246-10-25", reply_markup=ReplyKeyboardRemove())
+        await state.finish()
+    elif message.text == "Accounting department":
+        await message.answer("+998(71)246-20-79", reply_markup=ReplyKeyboardRemove())
+        await state.finish()
+    elif message.text == "HR management department":
+        await message.answer("+998(71)246-20-53", reply_markup=ReplyKeyboardRemove())
+        await state.finish()
+
