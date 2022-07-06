@@ -18,7 +18,7 @@ keyboard_2020 = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(text="1.ME1-2-20", callback_data="20:1.ME1-2-20"),
-            InlineKeyboardButton(text="1.ME3-4-20", callback_data="20:1ME3-4-20"),
+            InlineKeyboardButton(text="1.ME3-4-20", callback_data="20:1.ME3-4-20"),
         ],
         [
             InlineKeyboardButton(text="1CIE1-2-20", callback_data="20:1CIE1-2-20"),
