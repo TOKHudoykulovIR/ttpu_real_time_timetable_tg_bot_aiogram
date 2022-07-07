@@ -181,22 +181,52 @@ async def first_lvl_btn(message: types.Message, state: FSMContext):
     if message.text == "ME":
         print("me catalog")
         await message.answer("""
-            №	    subjects    	credits\n
-1	    chemistry 	    8️⃣
-2	    math. analysis I    	🔟
-3	    computer science	    8️⃣
-4	    lin. algebra and geometry I 	6️⃣
-5	    lin. algebra and geometry II	    4️⃣
-6	    physics I	    🔟
-7	    math. analysis II	    8️⃣
-8	    engineering drawing 	6️⃣\n	 
-Total   5️⃣2️⃣
-""",
+                    №	    subjects    	credits\n
+        1	    chemistry 	    8️⃣
+        2	    math. analysis I    	🔟
+        3	    computer science	    8️⃣
+        4	    lin. algebra and geometry I 	6️⃣
+        5	    lin. algebra and geometry II	    4️⃣
+        6	    physics I	    🔟
+        7	    math. analysis II	    8️⃣
+        8	    engineering drawing 	6️⃣\n	 
+        Total   6️⃣0
+        """,
                              reply_markup=ReplyKeyboardRemove())
     elif message.text == "IT":
-        pass
+        print("me catalog")
+        await message.answer("""
+                №	    subjects    	credits\n
+        1	    chemistry 	8️⃣
+        2	    mathematical analysis I	🔟
+        3	    computer science	8️⃣
+        4	    linear algebra and geometry I	6️⃣
+        5	    linear algebra and geometry II	4️⃣
+        6	    physics I	🔟
+        7	    mathematical analysis II	8️⃣
+        8	    algorithms and programming I	6️⃣\n
+        total   60
+        """,
+                             reply_markup=ReplyKeyboardRemove())
     elif message.text == "CIE":
-        pass
+        await message.answer("""
+                №	    subjects    	credits\n
+        1	    chemistry 🧪	8️⃣
+        2	    mathematical analysis I 🧮	🔟
+        3	    computer science 💻	8️⃣
+        4	    linear algebra and geometry I 📐 	6️⃣
+        5	    linear algebra and geometry II 📐	4️⃣
+        6	    physics I 🔭	🔟
+        7	    mathematical analysis II 🧮	8️⃣
+        8	    drawing	✏️ 6️⃣\n
+        total   60
+        """,
+                             reply_markup=ReplyKeyboardRemove())
+
+
+
+
+
 
 
 @dp.message_handler(state=FSMMenu.tel_number)
