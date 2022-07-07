@@ -126,7 +126,9 @@ class FSMMenu(StatesGroup):
     menu_category_selection = State()
     course_catalog = State()
     tel_number = State()
-    faculty = State()
+    faculty_first_lvl = State()
+    faculty_scnd_lvl = State()
+    faculty_third_lvl = State()
 
 
 @dp.message_handler(commands=['menu'], state="*")
@@ -169,64 +171,107 @@ Total   ➏➏
         await state.finish()
     elif message.text == "1-ST LEVEL":
         await message.answer("▷▷▷", reply_markup=faculty_keyboard)
-        await FSMMenu.faculty.set()
+        await FSMMenu.faculty_first_lvl.set()
     elif message.text == "2-ND LEVEL":
-        await FSMMenu.faculty.set()
+        await FSMMenu.faculty_scnd_lvl.set()
     elif message.text == "3-RD LEVEL":
-        await FSMMenu.faculty.set()
+        await FSMMenu.faculty_third_lvl.set()
 
 
-@dp.message_handler(state=FSMMenu.faculty)
+@dp.message_handler(state=FSMMenu.faculty_first_lvl)
 async def first_lvl_btn(message: types.Message, state: FSMContext):
     if message.text == "ME":
-        print("me catalog")
+        print("me catalog 1st lvl")
         await message.answer("""
-                    №	    subjects    	credits\n
-        1	    chemistry 	    8️⃣
-        2	    math. analysis I    	🔟
-        3	    computer science	    8️⃣
-        4	    lin. algebra and geometry I 	6️⃣
-        5	    lin. algebra and geometry II	    4️⃣
-        6	    physics I	    🔟
-        7	    math. analysis II	    8️⃣
-        8	    engineering drawing 	6️⃣\n	 
-        Total   6️⃣0
-        """,
+                №	    subjects    	credits\n
+1	    chemistry 	    8️⃣
+2	    math. analysis I    	🔟
+3	    computer science	    8️⃣
+4	    lin. algebra and geometry I 	6️⃣
+5	    lin. algebra and geometry II	    4️⃣
+6	    physics I	    🔟
+7	    math. analysis II	    8️⃣
+8	    engineering drawing 	6️⃣\n	 
+🟰   6️⃣0️⃣
+""",
                              reply_markup=ReplyKeyboardRemove())
     elif message.text == "IT":
-        print("me catalog")
+        print("it catalog 1st lvl")
         await message.answer("""
-                №	    subjects    	credits\n
-        1	    chemistry 	8️⃣
-        2	    mathematical analysis I	🔟
-        3	    computer science	8️⃣
-        4	    linear algebra and geometry I	6️⃣
-        5	    linear algebra and geometry II	4️⃣
-        6	    physics I	🔟
-        7	    mathematical analysis II	8️⃣
-        8	    algorithms and programming I	6️⃣\n
-        total   60
-        """,
+                 №	    subjects    	credits\n
+1	    chemistry 	8️⃣
+2	    mathematical analysis I	🔟
+3	    computer science	8️⃣
+4	    linear algebra and geometry I	6️⃣
+5	    linear algebra and geometry II	4️⃣
+6	    physics I	🔟
+7	    mathematical analysis II	8️⃣
+8	    algorithms and programming I	6️⃣\n
+total   6️⃣0️⃣
+""",
                              reply_markup=ReplyKeyboardRemove())
     elif message.text == "CIE":
+        print("cie faculty 1st lvl")
         await message.answer("""
                 №	    subjects    	credits\n
-        1	    chemistry 🧪	8️⃣
-        2	    mathematical analysis I 🧮	🔟
-        3	    computer science 💻	8️⃣
-        4	    linear algebra and geometry I 📐 	6️⃣
-        5	    linear algebra and geometry II 📐	4️⃣
-        6	    physics I 🔭	🔟
-        7	    mathematical analysis II 🧮	8️⃣
-        8	    drawing	✏️ 6️⃣\n
-        total   60
-        """,
+1	    chemistry 	8️⃣
+2	    mathematical analysis I 	🔟
+3	    computer science 	8️⃣
+4	    linear algebra and geometry I  	6️⃣
+5	    linear algebra and geometry II 	4️⃣
+6	    physics I 	🔟
+7	    mathematical analysis II 	8️⃣
+8	    drawing	 6️⃣\n
+total   6️⃣0️⃣
+""",
                              reply_markup=ReplyKeyboardRemove())
 
 
-
-
-
+@dp.message_handler(state=FSMMenu.faculty_scnd_lvl)
+async def second_lvl_btn(message: types.Message, state: FSMContext):
+    if message.text == "ME":
+        print("me catalog 2nd lvl")
+        await message.answer("""
+                 №	    subjects    	credits\n
+1       Physics II	6
+2	    Fundam. of Eng. Thermodynamics and heat transfer	8
+3	    Experimental Statistics and Mechanical Measurements	6
+4	    Introduction to electrical engineering / Electrical machines	10
+5	    Science & Technology of Materials (MEC)	5
+6	    Technology of Metallic Materials	5
+7   	Applied mechanics	10
+8   	Fundamentals of strength of materials	8
+total   6️⃣0️⃣""",
+                             reply_markup=ReplyKeyboardRemove())
+    elif message.text == "IT":
+        print("it catalog 2nd lvl")
+        await message.answer("""
+                №	    subjects    	credits\n
+1       Physics II	6
+9	 	Circuit Theory	8
+10	 	Databases	8
+11	 	Algorithms and Programming 2	6
+12	 	Object-oriented programming	6
+13	 	Electronic Systems and Technologies	10
+14	 	Computer architectures	8
+15	 	Mathematical methods A	4
+16	 	Mathematical methods B	6
+total   6️⃣0️⃣""",
+                             reply_markup=ReplyKeyboardRemove())
+    elif message.text == "CIE":
+        print("cie catalog 2nd lvl")
+        await message.answer("""
+                №	    subjects    	credits\n
+1       Physics II	6
+2	    Fundam. of Eng. Thermodynamics and heat transfer	8
+17	 	Science & Technology of Materials (CIV)	6
+18	 	Geology / Safety and civil protection 	8
+19	    Analytical Mechanics 	8
+20	    Statistical Methods for Engineering	4
+21	    Structural Mechanics	12
+22	    Land Surveying	8
+total   6️⃣0️⃣""",
+                             reply_markup=ReplyKeyboardRemove())
 
 
 @dp.message_handler(state=FSMMenu.tel_number)
