@@ -121,175 +121,177 @@ async def groups_year_20(call: CallbackQuery):
 async def groups_year_19(call: CallbackQuery):
     await parse_data(call)
 
-#
-# class FSMMenu(StatesGroup):
-#     menu_category_selection = State()
-#     course_catalog = State()
-#     tel_number = State()
-#     faculty_first_lvl = State()
-#     faculty_scnd_lvl = State()
-#     faculty_third_lvl = State()
-#
-#
-# @dp.message_handler(commands=['menu'], state="*")
-# async def menu(message: types.Message):
-#     await FSMMenu.menu_category_selection.set()
-#     await message.answer("choose category ↘︎", reply_markup=menu_keyboard)
-#
-#
-# @dp.message_handler(state=FSMMenu.menu_category_selection)
-# async def menu_categories(message: types.Message):
-#     if message.text == 'Course Catalog 📋':
-#         await message.answer('▷▷▷', reply_markup=course_keyboard)
-#         await FSMMenu.course_catalog.set()
-#     elif message.text == "Turin's Contacts 📞":
-#         await message.answer("▷▷▷", reply_markup=tel_numbers_keyboard)
-#         await FSMMenu.tel_number.set()
-#
-#
-# @dp.message_handler(state=FSMMenu.course_catalog)
-# async def course_catalog_btn(message: types.Message, state: FSMContext):
-#     if message.text == "Back ⬅️":
-#         await message.answer("▷▷▷", reply_markup=menu_keyboard)
-#         await FSMMenu.menu_category_selection.set()
-#     elif message.text == "PY":
-#         await message.answer("""
-#                 №   Subject   Credits\n
-# 1   Mathematics     ➓
-# 2   Chemistry   ➒
-# 3   Physics     ➑
-# 4   Drawing     ➏
-# 5   Computer science    ➎
-# 6   English language (Technical)	➊➑
-# 7   History of Uzbekistan   ➍
-# 8   Constitution of Republic of Uzbekistan  ➋
-# 9   Economics	➍
-# 10  Russian Language
-# 11  Physical training\n
-# Total   ➏➏
-#                 """, reply_markup=ReplyKeyboardRemove())
-#         await state.finish()
-#     elif message.text == "1-ST LEVEL":
-#         await message.answer("▷▷▷", reply_markup=faculty_keyboard)
-#         await FSMMenu.faculty_first_lvl.set()
-#     elif message.text == "2-ND LEVEL":
-#         await message.answer("▷▷▷", reply_markup=faculty_keyboard)
-#         await FSMMenu.faculty_scnd_lvl.set()
-#     elif message.text == "3-RD LEVEL":
-#         await message.answer("▷▷▷", reply_markup=faculty_keyboard)
-#         await FSMMenu.faculty_third_lvl.set()
-#
-#
-# @dp.message_handler(state=FSMMenu.faculty_first_lvl)
-# async def first_lvl_btn(message: types.Message, state: FSMContext):
-#     if message.text == "ME":
-#         print("me catalog 1st lvl")
-#         await message.answer("""
-#                 №	    subjects    	credits\n
-# 1	    chemistry 	    8️⃣
-# 2	    math. analysis I    	🔟
-# 3	    computer science	    8️⃣
-# 4	    lin. algebra and geometry I 	6️⃣
-# 5	    lin. algebra and geometry II	    4️⃣
-# 6	    physics I	    🔟
-# 7	    math. analysis II	    8️⃣
-# 8	    engineering drawing 	6️⃣\n
-# 🟰   6️⃣0️⃣
-# """,
-#                              reply_markup=ReplyKeyboardRemove())
-#     elif message.text == "IT":
-#         print("it catalog 1st lvl")
-#         await message.answer("""
-#                  №	    subjects    	credits\n
-# 1	    chemistry 	8️⃣
-# 2	    mathematical analysis I	🔟
-# 3	    computer science	8️⃣
-# 4	    linear algebra and geometry I	6️⃣
-# 5	    linear algebra and geometry II	4️⃣
-# 6	    physics I	🔟
-# 7	    mathematical analysis II	8️⃣
-# 8	    algorithms and programming I	6️⃣\n
-# total   6️⃣0️⃣
-# """,
-#                              reply_markup=ReplyKeyboardRemove())
-#     elif message.text == "CIE":
-#         print("cie faculty 1st lvl")
-#         await message.answer("""
-#                 №	    subjects    	credits\n
-# 1	    chemistry 	8️⃣
-# 2	    mathematical analysis I 	🔟
-# 3	    computer science 	8️⃣
-# 4	    linear algebra and geometry I  	6️⃣
-# 5	    linear algebra and geometry II 	4️⃣
-# 6	    physics I 	🔟
-# 7	    mathematical analysis II 	8️⃣
-# 8	    drawing	 6️⃣\n
-# total   6️⃣0️⃣
-# """,
-#                              reply_markup=ReplyKeyboardRemove())
-#
-#
-# @dp.message_handler(state=FSMMenu.faculty_scnd_lvl)
-# async def second_lvl_btn(message: types.Message, state: FSMContext):
-#     if message.text == "ME":
-#         print("me catalog 2nd lvl")
-#         await message.answer("""
-#                №         subjects    	credits\n
-# 1️⃣      Physics II ➖   𝟲
-# 2️⃣	    Fundam. of Eng. Thermodynamics and heat transfer    ➖   𝟴
-# 3️⃣	    Experimental Statistics and Mechanical Measurements ➖   𝟲
-# 4️⃣	    Introduction to electrical engineering / Electrical machines    ➖   𝟭𝟬
-# 5️⃣	    Science & Technology of Materials (MEC) ➖    𝟱
-# 6️⃣	    Technology of Metallic Materials    ➖   𝟱
-# 7️⃣      Applied mechanics  ➖   𝟭𝟬
-# 8️⃣      Fundamentals of strength of materials  ➖   𝟴
-# total   𝟲𝟮""",
-#                              reply_markup=ReplyKeyboardRemove())
-#     elif message.text == "IT":
-#         print("it catalog 2nd lvl")
-#         await message.answer("""
-#                 №	    subjects    	credits\n
-# 1️⃣      Physics II ➖   𝟲
-# 2️⃣	 	Circuit Theory  ➖   𝟴
-# 3️⃣	 	Databases   ➖   𝟴
-# 4️⃣	 	Algorithms and Programming 2    ➖   𝟲
-# 5️⃣	 	Object-oriented programming ➖   𝟲
-# 6️⃣	 	Electronic Systems and Technologies ➖   𝟭𝟬
-# 7️⃣	 	Computer architectures  ➖   𝟴
-# 8️⃣	 	Mathematical methods A	➖   𝟰
-# 9️⃣	 	Mathematical methods B  ➖   𝟲
-# total   𝟲𝟮""",
-#                              reply_markup=ReplyKeyboardRemove())
-#     elif message.text == "CIE":
-#         print("cie catalog 2nd lvl")
-#         await message.answer("""
-#                 №	    subjects    	credits\n
-# 1️⃣      Physics II ➖   𝟲
-# 2️⃣	    Fundam. of Eng. Thermodynamics and heat transfer    ➖   𝟴
-# 3️⃣	 	Science & Technology of Materials (CIV) ➖   𝟲
-# 4️⃣	 	Geology / Safety and civil protection   ➖   𝟴
-# 5️⃣	    Analytical Mechanics    ➖   𝟴
-# 6️⃣	    Statistical Methods for Engineering ➖   𝟰
-# 7️⃣	    Structural Mechanics    ➖   𝟭𝟮
-# 8️⃣	    Land Surveying  ➖   𝟴
-# total   𝟲𝟮""",
-#                              reply_markup=ReplyKeyboardRemove())
-#
-#
-# @dp.message_handler(state=FSMMenu.tel_number)
-# async def turin_s_contacts_btn(message: types.Message, state: FSMContext):
-#     if message.text == "Back ⬅️":
-#         await message.answer("▷▷▷", reply_markup=menu_keyboard)
-#         await FSMMenu.menu_category_selection.set()
-#     elif message.text == "Rector’s reception":
-#         await message.answer("+998(71)246-70-82", reply_markup=ReplyKeyboardRemove())
-#         await state.finish()
-#     elif message.text == "Financial management department":
-#         await message.answer("+998(71)246-10-25", reply_markup=ReplyKeyboardRemove())
-#         await state.finish()
-#     elif message.text == "Accounting department":
-#         await message.answer("+998(71)246-20-79", reply_markup=ReplyKeyboardRemove())
-#         await state.finish()
-#     elif message.text == "HR management department":
-#         await message.answer("+998(71)246-20-53", reply_markup=ReplyKeyboardRemove())
-#         await state.finish()
+
+class FSMMenu(StatesGroup):
+    menu_category_selection = State()
+    course_catalog = State()
+    tel_number = State()
+    faculty_first_lvl = State()
+    faculty_scnd_lvl = State()
+    faculty_third_lvl = State()
+
+
+@dp.message_handler(commands=['menu'], state="*")
+async def menu(message: types.Message):
+    await FSMMenu.menu_category_selection.set()
+    await message.answer("choose category ↘︎", reply_markup=menu_keyboard)
+
+
+@dp.message_handler(state=FSMMenu.menu_category_selection)
+async def menu_categories(message: types.Message):
+    if message.text == 'Course Catalog 📋':
+        await message.answer('▷▷▷', reply_markup=course_keyboard)
+        await FSMMenu.course_catalog.set()
+    elif message.text == "Turin's Contacts 📞":
+        await message.answer("▷▷▷", reply_markup=tel_numbers_keyboard)
+        await FSMMenu.tel_number.set()
+
+
+@dp.message_handler(state=FSMMenu.course_catalog)
+async def course_catalog_btn(message: types.Message, state: FSMContext):
+    if message.text == "Back ⬅️":
+        await message.answer("▷▷▷", reply_markup=menu_keyboard)
+        await FSMMenu.menu_category_selection.set()
+    elif message.text == "PY":
+        await message.answer("""
+                №   Subject   Credits\n
+1   Mathematics     ➓
+2   Chemistry   ➒
+3   Physics     ➑
+4   Drawing     ➏
+5   Computer science    ➎
+6   English language (Technical)	➊➑
+7   History of Uzbekistan   ➍
+8   Constitution of Republic of Uzbekistan  ➋
+9   Economics	➍
+10  Russian Language
+11  Physical training\n
+Total   ➏➏
+                """, reply_markup=ReplyKeyboardRemove())
+        await state.finish()
+    elif message.text == "1-ST LEVEL":
+        await message.answer("▷▷▷", reply_markup=faculty_keyboard)
+        await FSMMenu.faculty_first_lvl.set()
+    elif message.text == "2-ND LEVEL":
+        await message.answer("▷▷▷", reply_markup=faculty_keyboard)
+        await FSMMenu.faculty_scnd_lvl.set()
+    elif message.text == "3-RD LEVEL":
+        await message.answer("▷▷▷", reply_markup=faculty_keyboard)
+        await FSMMenu.faculty_third_lvl.set()
+
+
+@dp.message_handler(state=FSMMenu.faculty_first_lvl)
+async def first_lvl_btn(message: types.Message, state: FSMContext):
+    if message.text == "ME":
+        print("me catalog 1st lvl")
+        await message.answer("""
+                №	    subjects    	credits\n
+1	    chemistry 	    8️⃣
+2	    math. analysis I    	🔟
+3	    computer science	    8️⃣
+4	    lin. algebra and geometry I 	6️⃣
+5	    lin. algebra and geometry II	    4️⃣
+6	    physics I	    🔟
+7	    math. analysis II	    8️⃣
+8	    engineering drawing 	6️⃣\n
+🟰   6️⃣0️⃣
+""", reply_markup=ReplyKeyboardRemove())
+        await state.finish()
+    elif message.text == "IT":
+        print("it catalog 1st lvl")
+        await message.answer("""
+                 №	    subjects    	credits\n
+1	    chemistry 	8️⃣
+2	    mathematical analysis I	🔟
+3	    computer science	8️⃣
+4	    linear algebra and geometry I	6️⃣
+5	    linear algebra and geometry II	4️⃣
+6	    physics I	🔟
+7	    mathematical analysis II	8️⃣
+8	    algorithms and programming I	6️⃣\n
+total   6️⃣0️⃣
+""", reply_markup=ReplyKeyboardRemove())
+        await state.finish()
+    elif message.text == "CIE":
+        print("cie faculty 1st lvl")
+        await message.answer("""
+                №	    subjects    	credits\n
+1	    chemistry 	8️⃣
+2	    mathematical analysis I 	🔟
+3	    computer science 	8️⃣
+4	    linear algebra and geometry I  	6️⃣
+5	    linear algebra and geometry II 	4️⃣
+6	    physics I 	🔟
+7	    mathematical analysis II 	8️⃣
+8	    drawing	 6️⃣\n
+total   6️⃣0️⃣
+""", reply_markup=ReplyKeyboardRemove())
+        await state.finish()
+
+
+@dp.message_handler(state=FSMMenu.faculty_scnd_lvl)
+async def second_lvl_btn(message: types.Message, state: FSMContext):
+    if message.text == "ME":
+        print("me catalog 2nd lvl")
+        await message.answer("""
+               №         subjects    	credits\n
+1️⃣      Physics II ➖   𝟲
+2️⃣	    Fundam. of Eng. Thermodynamics and heat transfer    ➖   𝟴
+3️⃣	    Experimental Statistics and Mechanical Measurements ➖   𝟲
+4️⃣	    Introduction to electrical engineering / Electrical machines    ➖   𝟭𝟬
+5️⃣	    Science & Technology of Materials (MEC) ➖    𝟱
+6️⃣	    Technology of Metallic Materials    ➖   𝟱
+7️⃣      Applied mechanics  ➖   𝟭𝟬
+8️⃣      Fundamentals of strength of materials  ➖   𝟴
+total   𝟲𝟮""", reply_markup=ReplyKeyboardRemove())
+        await state.finish()
+
+    elif message.text == "IT":
+        print("it catalog 2nd lvl")
+        await message.answer("""
+                №	    subjects    	credits\n
+1️⃣      Physics II ➖   𝟲
+2️⃣	 	Circuit Theory  ➖   𝟴
+3️⃣	 	Databases   ➖   𝟴
+4️⃣	 	Algorithms and Programming 2    ➖   𝟲
+5️⃣	 	Object-oriented programming ➖   𝟲
+6️⃣	 	Electronic Systems and Technologies ➖   𝟭𝟬
+7️⃣	 	Computer architectures  ➖   𝟴
+8️⃣	 	Mathematical methods A	➖   𝟰
+9️⃣	 	Mathematical methods B  ➖   𝟲
+total   𝟲𝟮""", reply_markup=ReplyKeyboardRemove())
+        await state.finish()
+
+    elif message.text == "CIE":
+        print("cie catalog 2nd lvl")
+        await message.answer("""
+                №	    subjects    	credits\n
+1️⃣      Physics II ➖   𝟲
+2️⃣	    Fundam. of Eng. Thermodynamics and heat transfer    ➖   𝟴
+3️⃣	 	Science & Technology of Materials (CIV) ➖   𝟲
+4️⃣	 	Geology / Safety and civil protection   ➖   𝟴
+5️⃣	    Analytical Mechanics    ➖   𝟴
+6️⃣	    Statistical Methods for Engineering ➖   𝟰
+7️⃣	    Structural Mechanics    ➖   𝟭𝟮
+8️⃣	    Land Surveying  ➖   𝟴
+total   𝟲𝟮""", reply_markup=ReplyKeyboardRemove())
+        await state.finish()
+
+
+@dp.message_handler(state=FSMMenu.tel_number)
+async def turin_s_contacts_btn(message: types.Message, state: FSMContext):
+    if message.text == "Back ⬅️":
+        await message.answer("▷▷▷", reply_markup=menu_keyboard)
+        await FSMMenu.menu_category_selection.set()
+    elif message.text == "Rector’s reception":
+        await message.answer("+998(71)246-70-82", reply_markup=ReplyKeyboardRemove())
+        await state.finish()
+    elif message.text == "Financial management department":
+        await message.answer("+998(71)246-10-25", reply_markup=ReplyKeyboardRemove())
+        await state.finish()
+    elif message.text == "Accounting department":
+        await message.answer("+998(71)246-20-79", reply_markup=ReplyKeyboardRemove())
+        await state.finish()
+    elif message.text == "HR management department":
+        await message.answer("+998(71)246-20-53", reply_markup=ReplyKeyboardRemove())
+        await state.finish()
