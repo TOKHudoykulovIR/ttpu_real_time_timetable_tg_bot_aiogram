@@ -235,44 +235,44 @@ async def second_lvl_btn(message: types.Message, state: FSMContext):
         print("me catalog 2nd lvl")
         await message.answer("""
                №         subjects    	credits\n
-1️⃣      Physics II➖𝟲
-2️⃣	    Fundam. of Eng. Thermodynamics and heat transfer➖𝟴
-3️⃣	    Experimental Statistics and Mechanical Measurements➖𝟲
-4️⃣	    Introduction to electrical engineering / Electrical machines➖𝟭𝟬
-5️⃣	    Science & Technology of Materials (MEC)➖𝟱
-6️⃣	    Technology of Metallic Materials➖𝟱
-7️⃣      Applied mechanics➖𝟭𝟬
-8️⃣      Fundamentals of strength of materials➖𝟴
-total   𝟲𝟬""",
+1️⃣      Physics II ➖   𝟲
+2️⃣	    Fundam. of Eng. Thermodynamics and heat transfer    ➖   𝟴
+3️⃣	    Experimental Statistics and Mechanical Measurements ➖   𝟲
+4️⃣	    Introduction to electrical engineering / Electrical machines    ➖   𝟭𝟬
+5️⃣	    Science & Technology of Materials (MEC) ➖    𝟱
+6️⃣	    Technology of Metallic Materials    ➖   𝟱
+7️⃣      Applied mechanics  ➖   𝟭𝟬
+8️⃣      Fundamentals of strength of materials  ➖   𝟴
+total   𝟲𝟮""",
                              reply_markup=ReplyKeyboardRemove())
     elif message.text == "IT":
         print("it catalog 2nd lvl")
         await message.answer("""
                 №	    subjects    	credits\n
-1       Physics II	6
-9	 	Circuit Theory	8
-10	 	Databases	8
-11	 	Algorithms and Programming 2	6
-12	 	Object-oriented programming	6
-13	 	Electronic Systems and Technologies	10
-14	 	Computer architectures	8
-15	 	Mathematical methods A	4
-16	 	Mathematical methods B	6
-total   6️⃣0️⃣""",
+1️⃣      Physics II ➖   𝟲
+2️⃣	 	Circuit Theory  ➖   𝟴
+3️⃣	 	Databases   ➖   𝟴
+4️⃣	 	Algorithms and Programming 2    ➖   𝟲
+5️⃣	 	Object-oriented programming ➖   𝟲
+6️⃣	 	Electronic Systems and Technologies ➖   𝟭𝟬
+7️⃣	 	Computer architectures  ➖   𝟴
+8️⃣	 	Mathematical methods A	➖   𝟰
+9️⃣	 	Mathematical methods B  ➖   𝟲
+total   𝟲𝟮""",
                              reply_markup=ReplyKeyboardRemove())
     elif message.text == "CIE":
         print("cie catalog 2nd lvl")
         await message.answer("""
                 №	    subjects    	credits\n
-1       Physics II	6
-2	    Fundam. of Eng. Thermodynamics and heat transfer	8
-17	 	Science & Technology of Materials (CIV)	6
-18	 	Geology / Safety and civil protection 	8
-19	    Analytical Mechanics 	8
-20	    Statistical Methods for Engineering	4
-21	    Structural Mechanics	12
-22	    Land Surveying	8
-total   6️⃣0️⃣""",
+1️⃣      Physics II ➖   𝟲
+2️⃣	    Fundam. of Eng. Thermodynamics and heat transfer    ➖   𝟴
+3️⃣	 	Science & Technology of Materials (CIV) ➖   𝟲
+4️⃣	 	Geology / Safety and civil protection   ➖   𝟴
+5️⃣	    Analytical Mechanics    ➖   𝟴
+6️⃣	    Statistical Methods for Engineering ➖   𝟰
+7️⃣	    Structural Mechanics    ➖   𝟭𝟮
+8️⃣	    Land Surveying  ➖   𝟴
+total   𝟲𝟮""",
                              reply_markup=ReplyKeyboardRemove())
 
 
