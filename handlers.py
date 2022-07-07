@@ -151,13 +151,13 @@ async def menu(message: types.Message):
 
 @dp.callback_query_handler(cd_menu.filter(category="catalog"))
 async def catalog(call: CallbackQuery):
-    await call.message.answer('catalog of subjects', reply_markup=keyboard_2020)
+    await call.message.answer('catalog of subjects', reply_markup=course_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
 
 
 @dp.callback_query_handler(cd_menu.filter(category="contacts"))
 async def contacts(call: CallbackQuery):
-    await call.message.answer('turins contacts', reply_markup=keyboard_2019)
+    await call.message.answer('turins contacts', reply_markup=tel_numbers_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
 
 

@@ -88,8 +88,8 @@ cd_menu = CallbackData("menu", "category")
 menu_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="Course Catalog 📋", callback_data="m:catalog"),
-            InlineKeyboardButton(text="Turin's Contacts 📞", callback_data="m:contacts")
+            InlineKeyboardButton(text="Course Catalog 📋", callback_data="menu:catalog"),
+            InlineKeyboardButton(text="Turin's Contacts 📞", callback_data="menu:contacts")
         ],
     ],
     resize_keyboard=True,
@@ -98,11 +98,11 @@ menu_keyboard = InlineKeyboardMarkup(
 cd_tel_num = CallbackData("telephone_numbers", "owner")
 tel_numbers_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
-        [InlineKeyboardButton(text="Rector’s reception", callback_data="number:rector")],
-        [InlineKeyboardButton(text="Financial management department", callback_data="number:finance")],
-        [InlineKeyboardButton(text="Accounting department", callback_data="number:accounting")],
-        [InlineKeyboardButton(text="HR management department", callback_data="number:hr")],
-        [InlineKeyboardButton(text="Back ⬅️", callback_data="number:back")],
+        [InlineKeyboardButton(text="Rector’s reception", callback_data="telephone_numbers:rector")],
+        [InlineKeyboardButton(text="Financial management department", callback_data="telephone_numbers:finance")],
+        [InlineKeyboardButton(text="Accounting department", callback_data="telephone_numbers:accounting")],
+        [InlineKeyboardButton(text="HR management department", callback_data="telephone_numbers:hr")],
+        [InlineKeyboardButton(text="Back ⬅️", callback_data="telephone_numbers:back")],
     ],
     resize_keyboard=True,
 )
