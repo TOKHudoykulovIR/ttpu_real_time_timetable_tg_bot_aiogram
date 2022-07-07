@@ -76,86 +76,60 @@ keyboard_2019 = InlineKeyboardMarkup(
     resize_keyboard=True
 )
 
-keyboard_2018 = InlineKeyboardMarkup(
+# keyboard_2018 = InlineKeyboardMarkup(
+#     inline_keyboard=[
+#         [InlineKeyboardButton(text="𝙲𝙾𝙼𝙸𝙽𝙶 𝚂𝙾𝙾𝙽...", callback_data="cs")],
+#         [InlineKeyboardButton(text='𝙲𝙰𝙽𝙲𝙴𝙻', callback_data='cancel')]
+#     ],
+#     resize_keyboard=True
+# )
+
+cd_menu = CallbackData("menu", "category")
+menu_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="𝙲𝙾𝙼𝙸𝙽𝙶 𝚂𝙾𝙾𝙽...", callback_data="cs"),
+            InlineKeyboardButton(text="Course Catalog 📋", callback_data="m:catalog"),
+            InlineKeyboardButton(text="Turin's Contacts 📞", callback_data="m:contacts")
         ],
-        [
-            InlineKeyboardButton(text='𝙲𝙰𝙽𝙲𝙴𝙻', callback_data='cancel')
-        ]
-    ],
-    resize_keyboard=True
-)
-
-menu_keyboard = ReplyKeyboardMarkup(
-    keyboard=[
-        [KeyboardButton(text="Course Catalog 📋"), ],
-        [KeyboardButton(text="Turin's Contacts 📞"), ],
     ],
     resize_keyboard=True,
-    one_time_keyboard=False,
 )
 
-tel_numbers_keyboard = ReplyKeyboardMarkup(
-    keyboard=[
-        [
-            KeyboardButton(text="Rector’s reception"),
-        ],
-        [
-            KeyboardButton(text="Financial management department"),
-        ],
-        [
-            KeyboardButton(text="Accounting department"),
-        ],
-        [
-            KeyboardButton(text="HR management department"),
-        ],
-        [
-            KeyboardButton(text="Back ⬅️"),
-        ]
+cd_tel_num = CallbackData("telephone_numbers", "owner")
+tel_numbers_keyboard = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="Rector’s reception", callback_data="number:rector")],
+        [InlineKeyboardButton(text="Financial management department", callback_data="number:finance")],
+        [InlineKeyboardButton(text="Accounting department", callback_data="number:accounting")],
+        [InlineKeyboardButton(text="HR management department", callback_data="number:hr")],
+        [InlineKeyboardButton(text="Back ⬅️", callback_data="number:back")],
     ],
     resize_keyboard=True,
-    one_time_keyboard=False,
 )
 
-course_keyboard = ReplyKeyboardMarkup(
-    keyboard=[
+cd_course = CallbackData("c", "course")
+course_keyboard = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="PY", callback_data="c:py")],
         [
-            KeyboardButton(text="PY"),
+            InlineKeyboardButton(text="1-ST LVL", callback_data="c:first_lvl"),
+            InlineKeyboardButton(text="2-ND LVL", callback_data="c:second_lvl"),
+            InlineKeyboardButton(text="3-RD LVL", callback_data="c:third_lvl"),
         ],
-        [
-            KeyboardButton(text="1-ST LEVEL"),
-        ],
-        [
-            KeyboardButton(text="2-ND LEVEL"),
-        ],
-        [
-            KeyboardButton(text="3-RD LEVEL"),
-        ],
-        [
-            KeyboardButton(text="Back ⬅️"),
-        ]
+        [InlineKeyboardButton(text="Back ⬅️", callback_data="c:back")]
     ],
     resize_keyboard=True,
-    one_time_keyboard=False,
 )
 
-faculty_keyboard = ReplyKeyboardMarkup(
+cd_faculty = CallbackData("f", "faculty")
+faculty_keyboard = InlineKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text="ME"),
+            InlineKeyboardButton(text="ME", callback_data="f:me"),
+            InlineKeyboardButton(text="CIE", callback_data="f:cie"),
+            InlineKeyboardButton(text="IT", callback_data="f:it")
         ],
-        [
-            KeyboardButton(text="CIE"),
-        ],
-        [
-            KeyboardButton(text="IT"),
-        ],
-        [
-            KeyboardButton(text="Back ⬅️"),
-        ]
+        [InlineKeyboardButton(text="Back ⬅️")]
     ],
     resize_keyboard=True,
-    one_time_keyboard=False,
 )
