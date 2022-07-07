@@ -32,7 +32,7 @@ async def stats(message: types.Message):
 
 
 #  > > >  BASE COMMANDS
-@dp.message_handler(commands=['help'])
+@dp.message_handler(commands=['help'], state="*")
 async def send_welcome(message: types.Message):
     user_id, user_name, user_text, time = data(message)
     await add_user(user_id, user_name, user_text, time)
@@ -43,7 +43,7 @@ async def send_welcome(message: types.Message):
                          "𝟹.  𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿")
 
 
-@dp.message_handler(commands=['start'])
+@dp.message_handler(commands=['start'], state="*")
 async def show_keyboard_levels(message: types.Message):
     user_id, user_name, user_text, time = data(message)
     await add_user(user_id, user_name, user_text, time)
@@ -227,6 +227,9 @@ total   6️⃣0️⃣
 total   6️⃣0️⃣
 """, reply_markup=ReplyKeyboardRemove())
         await state.finish()
+    elif message.text == "Back ⬅️":
+        await message.answer('▷▷▷', reply_markup=course_keyboard)
+        await FSMMenu.course_catalog.set()
 
 
 @dp.message_handler(state=FSMMenu.faculty_scnd_lvl)
@@ -276,6 +279,10 @@ total   𝟲𝟮""", reply_markup=ReplyKeyboardRemove())
 8️⃣	    Land Surveying  ➖   𝟴
 total   𝟲𝟮""", reply_markup=ReplyKeyboardRemove())
         await state.finish()
+
+    elif message.text == "Back ⬅️":
+        await message.answer('▷▷▷', reply_markup=course_keyboard)
+        await FSMMenu.course_catalog.set()
 
 
 @dp.message_handler(state=FSMMenu.tel_number)
