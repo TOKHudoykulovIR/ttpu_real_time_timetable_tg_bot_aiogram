@@ -173,8 +173,10 @@ Total   ➏➏
         await message.answer("▷▷▷", reply_markup=faculty_keyboard)
         await FSMMenu.faculty_first_lvl.set()
     elif message.text == "2-ND LEVEL":
+        await message.answer("▷▷▷", reply_markup=faculty_keyboard)
         await FSMMenu.faculty_scnd_lvl.set()
     elif message.text == "3-RD LEVEL":
+        await message.answer("▷▷▷", reply_markup=faculty_keyboard)
         await FSMMenu.faculty_third_lvl.set()
 
 
