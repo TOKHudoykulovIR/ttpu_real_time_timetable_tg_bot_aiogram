@@ -124,6 +124,7 @@ async def groups_year_19(call: CallbackQuery):
 
 # <><><><><><><><><><><><><><><><>
 
+
 #
 # class FSMMenu(StatesGroup):
 #     menu_category_selection = State()
@@ -138,7 +139,6 @@ async def groups_year_19(call: CallbackQuery):
 async def menu(message: types.Message):
     await message.answer("choose category ↘︎", reply_markup=menu_keyboard)
 
-
 # @dp.message_handler(state=FSMMenu.menu_category_selection)
 # async def menu_categories(message: types.Message):
 #     if message.text == 'Course Catalog 📋':
@@ -149,18 +149,15 @@ async def menu(message: types.Message):
 #         await FSMMenu.tel_number.set()
 
 
-
-
-
 @dp.callback_query_handler(cd_menu.filter(category="catalog"))
 async def catalog(call: CallbackQuery):
-    await call.message.answer('catalog of subjects', reply_markup=course_keyboard)
+    await call.message.answer('catalog of subjects', reply_markup=keyboard_2020)
     await call.message.edit_reply_markup(reply_markup=None)
 
 
 @dp.callback_query_handler(cd_menu.filter(category="contacts"))
 async def contacts(call: CallbackQuery):
-    await call.message.answer('turins contacts', reply_markup=tel_numbers_keyboard)
+    await call.message.answer('turins contacts', reply_markup=keyboard_2019)
     await call.message.edit_reply_markup(reply_markup=None)
 
 
