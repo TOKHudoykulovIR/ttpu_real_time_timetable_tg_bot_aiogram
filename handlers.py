@@ -234,16 +234,16 @@ async def second_lvl_btn(message: types.Message, state: FSMContext):
     if message.text == "ME":
         print("me catalog 2nd lvl")
         await message.answer("""
-                 №	    subjects    	credits\n
-1       Physics II	6
-2	    Fundam. of Eng. Thermodynamics and heat transfer	8
-3	    Experimental Statistics and Mechanical Measurements	6
-4	    Introduction to electrical engineering / Electrical machines	10
-5	    Science & Technology of Materials (MEC)	5
-6	    Technology of Metallic Materials	5
-7   	Applied mechanics	10
-8   	Fundamentals of strength of materials	8
-total   6️⃣0️⃣""",
+                        subjects    	credits\n
+🟠      Physics II	➏
+🟠	    Fundam. of Eng. Thermodynamics and heat transfer	➑
+🟠	    Experimental Statistics and Mechanical Measurements	➏
+🟠	    Introduction to electrical engineering / Electrical machines	❿
+🟠	    Science & Technology of Materials (MEC)	➎
+🟠	    Technology of Metallic Materials	➎
+🟠       Applied mechanics	❿
+🟠       Fundamentals of strength of materials	➑
+total   𝟼𝟶""",
                              reply_markup=ReplyKeyboardRemove())
     elif message.text == "IT":
         print("it catalog 2nd lvl")
