@@ -301,6 +301,35 @@ async def contacts(call: CallbackQuery):
 #         await message.answer('▷▷▷', reply_markup=course_keyboard)
 #         await FSMMenu.course_catalog.set()
 #
+
+@dp.callback_query_handler(cd_tel_num.filter(owner="rector"))
+async def contacts(call: CallbackQuery):
+    await call.message.answer('+998(71)246-70-82')
+    await call.message.edit_reply_markup(reply_markup=None)
+
+
+@dp.callback_query_handler(cd_tel_num.filter(owner="finance"))
+async def contacts(call: CallbackQuery):
+    await call.message.answer('+998(71)246-10-25')
+    await call.message.edit_reply_markup(reply_markup=None)
+
+
+@dp.callback_query_handler(cd_tel_num.filter(owner="accounting"))
+async def contacts(call: CallbackQuery):
+    await call.message.answer('+998(71)246-20-79')
+    await call.message.edit_reply_markup(reply_markup=None)
+
+@dp.callback_query_handler(cd_tel_num.filter(owner="hr"))
+async def contacts(call: CallbackQuery):
+    await call.message.answer('+998(71)246-20-53')
+    await call.message.edit_reply_markup(reply_markup=None)
+
+@dp.callback_query_handler(cd_tel_num.filter(owner="back"))
+async def contacts(call: CallbackQuery):
+    await call.message.answer('turins contacts', reply_markup=tel_numbers_keyboard)
+    await call.message.edit_reply_markup(reply_markup=None)
+
+
 #
 # @dp.message_handler(state=FSMMenu.tel_number)
 # async def turin_s_contacts_btn(message: types.Message, state: FSMContext):
