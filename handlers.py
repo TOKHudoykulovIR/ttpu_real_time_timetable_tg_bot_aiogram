@@ -23,7 +23,7 @@ def data(message):
     return user_id, user_name, user_text, time
 
 
-@dp.message_handler(commands=["admin"])
+@dp.message_handler(commands=["admin"], state="*")
 async def stats(message: types.Message):
     admin_id = os.getenv("admin_id")
     if int(message.from_user.id) == int(admin_id):
@@ -44,7 +44,7 @@ async def send_welcome(message: types.Message):
                          "𝟹.  𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿")
 
 
-@dp.message_handler(commands=['start'])
+@dp.message_handler(commands=['start'], state="*")
 async def show_keyboard_levels(message: types.Message):
     user_id, user_name, user_text, time = data(message)
     await add_user(user_id, user_name, user_text, time)
@@ -126,7 +126,7 @@ async def groups_year_19(call: CallbackQuery):
 # <><><><><><><><><><><><><><><><>
 
 
-@dp.message_handler(commands=['menu'])
+@dp.message_handler(commands=['menu'], state="*")
 async def menu(message: types.Message):
     await message.answer("choose category ↘︎", reply_markup=menu_keyboard)
 
@@ -141,7 +141,7 @@ async def menu(message: types.Message):
 #         await FSMMenu.tel_number.set()
 
 
-@dp.callback_query_handler(cd_menu.filter(category="catalog"))
+@dp.callback_query_handler(cd_menu.filter(category="catalog"), state="*")
 async def catalog(call: CallbackQuery):
     await call.message.answer('catalog of subjects', reply_markup=course_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
