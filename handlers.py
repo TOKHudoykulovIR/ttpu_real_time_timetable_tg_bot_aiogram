@@ -299,7 +299,7 @@ async def contacts(call: CallbackQuery):
 
 @dp.callback_query_handler(cd_course.filter(course="py"))
 async def py_catalog(call: CallbackQuery):
-    await call.message.answer('prep catalog')
+    await call.message.answer('prep catalog', reply_markup=course_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
 
 
