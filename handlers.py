@@ -307,14 +307,14 @@ async def py_catalog(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=None)
 
 
-@dp.callback_query_handler(cd_course.filter(course=["first_lvl"]))
+@dp.callback_query_handler(cd_course.filter(course=["first_lvl"]), state="*")
 async def contacts(call: CallbackQuery):
     await call.message.answer('choose faculty', reply_markup=faculty_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
     await FSMMenu.first_lvl.set()
 
 
-@dp.callback_query_handler(cd_course.filter(course=["second_lvl"]))
+@dp.callback_query_handler(cd_course.filter(course=["second_lvl"]), state="*")
 async def contacts(call: CallbackQuery):
     await call.message.answer('choose faculty', reply_markup=faculty_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
