@@ -3,7 +3,7 @@ from aiogram.dispatcher.filters import Text
 from main import dp
 from keyboards import keyboard_years, keyboard_2020, keyboard_2019, cd_years, cd_2020, cd_2019, \
     menu_keyboard, tel_numbers_keyboard, course_keyboard, faculty_keyboard, \
-    cd_menu,       cd_tel_num,           cd_course,       cd_faculty
+    cd_menu, cd_tel_num, cd_course, cd_faculty
 from aiogram.types import CallbackQuery, ReplyKeyboardRemove
 from parse_timetable import parse
 import datetime
@@ -122,22 +122,14 @@ async def groups_year_20(call: CallbackQuery):
 async def groups_year_19(call: CallbackQuery):
     await parse_data(call)
 
+
 # <><><><><><><><><><><><><><><><>
-
-
-#
-# class FSMMenu(StatesGroup):
-#     menu_category_selection = State()
-#     course_catalog = State()
-#     tel_number = State()
-#     faculty_first_lvl = State()
-#     faculty_scnd_lvl = State()
-#     faculty_third_lvl = State()
 
 
 @dp.message_handler(commands=['menu'])
 async def menu(message: types.Message):
     await message.answer("choose category ↘︎", reply_markup=menu_keyboard)
+
 
 # @dp.message_handler(state=FSMMenu.menu_category_selection)
 # async def menu_categories(message: types.Message):
@@ -159,7 +151,6 @@ async def catalog(call: CallbackQuery):
 async def contacts(call: CallbackQuery):
     await call.message.answer('turins contacts', reply_markup=tel_numbers_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
-
 
 
 #
@@ -302,6 +293,73 @@ async def contacts(call: CallbackQuery):
 #         await FSMMenu.course_catalog.set()
 #
 
+
+class FSMMenu(StatesGroup):
+    start = State()
+    first_lvl = State()
+    second_lvl = State()
+    third_lvl = State()
+
+
+@dp.callback_query_handler(cd_course.filter(course="py"))
+async def py_catalog(call: CallbackQuery):
+    await call.message.answer('prep catalog')
+    await call.message.edit_reply_markup(reply_markup=None)
+
+
+@dp.callback_query_handler(cd_course.filter(course=["first_lvl"]))
+async def contacts(call: CallbackQuery):
+    await call.message.answer('choose faculty', reply_markup=faculty_keyboard)
+    await call.message.edit_reply_markup(reply_markup=None)
+    await FSMMenu.first_lvl.set()
+
+
+@dp.callback_query_handler(cd_course.filter(course=["second_lvl"]))
+async def contacts(call: CallbackQuery):
+    await call.message.answer('choose faculty', reply_markup=faculty_keyboard)
+    await call.message.edit_reply_markup(reply_markup=None)
+    await FSMMenu.second_lvl.set()
+
+
+
+@dp.callback_query_handler(cd_course.filter(faculty="me"), state=FSMMenu.first_lvl)
+async def py_catalog(call: CallbackQuery, state: FSMContext):
+    await call.message.answer('here will be ME CAtaLOG for 1st lvl')
+    await call.message.edit_reply_markup(reply_markup=None)
+    await state.finish()
+@dp.callback_query_handler(cd_course.filter(faculty="it"), state=FSMMenu.first_lvl)
+async def py_catalog(call: CallbackQuery, state: FSMContext):
+    await call.message.answer('here will be IT CAtaLOG for 1st lvl')
+    await call.message.edit_reply_markup(reply_markup=None)
+    await state.finish()
+
+
+@dp.callback_query_handler(cd_course.filter(faculty="me"), state=FSMMenu.second_lvl)
+async def py_catalog(call: CallbackQuery, state: FSMContext):
+    await call.message.answer('here will be ME CAtaLOG for 2st lvl')
+    await call.message.edit_reply_markup(reply_markup=None)
+    await state.finish()
+@dp.callback_query_handler(cd_course.filter(faculty="it"), state=FSMMenu.second_lvl)
+async def py_catalog(call: CallbackQuery, state: FSMContext):
+    await call.message.answer('here will be IT CAtaLOG for 2st lvl')
+    await call.message.edit_reply_markup(reply_markup=None)
+    await state.finish()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @dp.callback_query_handler(cd_tel_num.filter(owner="rector"))
 async def contacts(call: CallbackQuery):
     await call.message.answer('+998(71)246-70-82')
@@ -319,16 +377,17 @@ async def contacts(call: CallbackQuery):
     await call.message.answer('+998(71)246-20-79')
     await call.message.edit_reply_markup(reply_markup=None)
 
+
 @dp.callback_query_handler(cd_tel_num.filter(owner="hr"))
 async def contacts(call: CallbackQuery):
     await call.message.answer('+998(71)246-20-53')
     await call.message.edit_reply_markup(reply_markup=None)
 
+
 @dp.callback_query_handler(cd_tel_num.filter(owner="back"))
 async def contacts(call: CallbackQuery):
     await call.message.answer('turins contacts', reply_markup=tel_numbers_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
-
 
 #
 # @dp.message_handler(state=FSMMenu.tel_number)

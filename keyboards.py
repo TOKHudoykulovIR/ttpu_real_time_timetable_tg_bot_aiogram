@@ -133,3 +133,4 @@ faculty_keyboard = InlineKeyboardMarkup(
     ],
     resize_keyboard=True,
 )
+
