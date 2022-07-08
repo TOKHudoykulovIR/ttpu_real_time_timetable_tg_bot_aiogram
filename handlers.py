@@ -307,7 +307,7 @@ async def py_catalog(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=None)
 
 
-@dp.callback_query_handler(cd_course.filter(course=["first_lvl"]))
+@dp.callback_query_handler(cd_course.filter(course="first_lvl"))
 async def first_lvl_catalog(call: CallbackQuery):
     await call.message.answer('choose faculty', reply_markup=faculty_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
