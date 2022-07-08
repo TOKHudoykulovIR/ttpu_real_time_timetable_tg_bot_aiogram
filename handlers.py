@@ -295,10 +295,8 @@ async def contacts(call: CallbackQuery):
 
 
 class FSMMenu(StatesGroup):
-    start = State()
     first_lvl = State()
     second_lvl = State()
-    third_lvl = State()
 
 
 @dp.callback_query_handler(cd_course.filter(course="py"))
