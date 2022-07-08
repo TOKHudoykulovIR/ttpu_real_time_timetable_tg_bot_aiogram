@@ -125,7 +125,7 @@ course_keyboard = InlineKeyboardMarkup(
 
 cd_faculty = CallbackData("f", "faculty")
 faculty_keyboard = InlineKeyboardMarkup(
-    keyboard=[
+    inline_keyboard=[
         [
             InlineKeyboardButton(text="ME", callback_data="f:me"),
             InlineKeyboardButton(text="CIE", callback_data="f:cie"),

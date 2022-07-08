@@ -14,6 +14,10 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 
 
+class FSMMenu(StatesGroup):
+    first_lvl = State()
+    second_lvl = State()
+
 
 def data(message):
     user_id = int(message.chat.id)
@@ -299,7 +303,7 @@ async def contacts(call: CallbackQuery):
 
 @dp.callback_query_handler(cd_course.filter(course="py"))
 async def py_catalog(call: CallbackQuery):
-    await call.message.answer('prep catalog', reply_markup=course_keyboard)
+    await call.message.answer('prep catalog')
     await call.message.edit_reply_markup(reply_markup=None)
 
 
@@ -307,43 +311,43 @@ async def py_catalog(call: CallbackQuery):
 async def first_lvl_catalog(call: CallbackQuery):
     await call.message.answer('choose faculty', reply_markup=faculty_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
-    # await FSMMenu.first_lvl.set()
+    await FSMMenu.first_lvl.set()
 
 
 @dp.callback_query_handler(cd_course.filter(course=["second_lvl"]))
 async def second_lvl_catalog(call: CallbackQuery):
-    await call.message.answer('choose faculty')
+    await call.message.answer('choose faculty', reply_markup=faculty_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
-    # await FSMMenu.second_lvl.set()
+    await FSMMenu.second_lvl.set()
 
 
 
 
 
 
-#
-# @dp.callback_query_handler(cd_faculty.filter(faculty=["me"]), state=FSMMenu.first_lvl)
-# async def me_first_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer('here will be ME CAtaLOG for 1st lvl')
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-# @dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.first_lvl)
-# async def it_first_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer('here will be IT CAtaLOG for 1st lvl')
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-#
-#
-# @dp.callback_query_handler(cd_faculty.filter(faculty="me"), state=FSMMenu.second_lvl)
-# async def me_second_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer('here will be ME CAtaLOG for 2st lvl')
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-# @dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.second_lvl)
-# async def it_second_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer('here will be IT CAtaLOG for 2st lvl')
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
+
+@dp.callback_query_handler(cd_faculty.filter(faculty=["me"]), state=FSMMenu.first_lvl)
+async def me_first_catalog(call: CallbackQuery, state: FSMContext):
+    await call.message.answer('here will be ME CAtaLOG for 1st lvl')
+    await call.message.edit_reply_markup(reply_markup=None)
+    await state.finish()
+@dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.first_lvl)
+async def it_first_catalog(call: CallbackQuery, state: FSMContext):
+    await call.message.answer('here will be IT CAtaLOG for 1st lvl')
+    await call.message.edit_reply_markup(reply_markup=None)
+    await state.finish()
+
+
+@dp.callback_query_handler(cd_faculty.filter(faculty="me"), state=FSMMenu.second_lvl)
+async def me_second_catalog(call: CallbackQuery, state: FSMContext):
+    await call.message.answer('here will be ME CAtaLOG for 2st lvl')
+    await call.message.edit_reply_markup(reply_markup=None)
+    await state.finish()
+@dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.second_lvl)
+async def it_second_catalog(call: CallbackQuery, state: FSMContext):
+    await call.message.answer('here will be IT CAtaLOG for 2st lvl')
+    await call.message.edit_reply_markup(reply_markup=None)
+    await state.finish()
 
 
 
