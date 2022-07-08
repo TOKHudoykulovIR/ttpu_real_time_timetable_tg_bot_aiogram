@@ -146,7 +146,7 @@ async def menu(message: types.Message):
 #         await FSMMenu.tel_number.set()
 
 
-@dp.callback_query_handler(cd_menu.filter(category="catalog"), state="*")
+@dp.callback_query_handler(cd_menu.filter(category="catalog"))
 async def catalog(call: CallbackQuery):
     await call.message.answer('catalog of subjects', reply_markup=course_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
@@ -307,15 +307,15 @@ async def py_catalog(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=None)
 
 
-@dp.callback_query_handler(cd_course.filter(course=["first_lvl"]), state="*")
-async def contacts(call: CallbackQuery):
+@dp.callback_query_handler(cd_course.filter(course=["first_lvl"]))
+async def first_lvl_catalog(call: CallbackQuery):
     await call.message.answer('choose faculty', reply_markup=faculty_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
     # await FSMMenu.first_lvl.set()
 
 
 @dp.callback_query_handler(cd_course.filter(course=["second_lvl"]), state="*")
-async def contacts(call: CallbackQuery):
+async def second_lvl_catalog(call: CallbackQuery):
     await call.message.answer('choose faculty', reply_markup=faculty_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
     await FSMMenu.second_lvl.set()
