@@ -14,10 +14,6 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 
 
-class FSMMenu(StatesGroup):
-    first_lvl = State()
-    second_lvl = State()
-
 
 def data(message):
     user_id = int(message.chat.id)
@@ -28,7 +24,7 @@ def data(message):
     return user_id, user_name, user_text, time
 
 
-@dp.message_handler(commands=["admin"], state="*")
+@dp.message_handler(commands=["admin"])
 async def stats(message: types.Message):
     admin_id = os.getenv("admin_id")
     if int(message.from_user.id) == int(admin_id):
@@ -49,7 +45,7 @@ async def send_welcome(message: types.Message):
                          "𝟹.  𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿")
 
 
-@dp.message_handler(commands=['start'], state="*")
+@dp.message_handler(commands=['start'])
 async def show_keyboard_levels(message: types.Message):
     user_id, user_name, user_text, time = data(message)
     await add_user(user_id, user_name, user_text, time)
@@ -131,7 +127,7 @@ async def groups_year_19(call: CallbackQuery):
 # <><><><><><><><><><><><><><><><>
 
 
-@dp.message_handler(commands=['menu'], state="*")
+@dp.message_handler(commands=['menu'])
 async def menu(message: types.Message):
     await message.answer("choose category ↘︎", reply_markup=menu_keyboard)
 
