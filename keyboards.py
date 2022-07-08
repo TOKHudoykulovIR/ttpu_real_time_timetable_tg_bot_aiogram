@@ -131,7 +131,7 @@ faculty_keyboard = InlineKeyboardMarkup(
             InlineKeyboardButton(text="CIE", callback_data="f:cie"),
             InlineKeyboardButton(text="IT", callback_data="f:it")
         ],
-        [InlineKeyboardButton(text="Back ⬅️")]
+        [InlineKeyboardButton(text="Back ⬅️", callback_data="f:back")]
     ],
     resize_keyboard=True,
 )
