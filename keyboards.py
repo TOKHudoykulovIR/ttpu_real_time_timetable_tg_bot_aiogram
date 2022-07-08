@@ -110,9 +110,11 @@ tel_numbers_keyboard = InlineKeyboardMarkup(
 cd_course = CallbackData("c", "course")
 course_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
-        [InlineKeyboardButton(text="PY", callback_data="c:py")],
         [
+            InlineKeyboardButton(text="PY", callback_data="c:py"),
             InlineKeyboardButton(text="1-ST LVL", callback_data="c:first_lvl"),
+        ],
+        [
             InlineKeyboardButton(text="2-ND LVL", callback_data="c:second_lvl"),
             InlineKeyboardButton(text="3-RD LVL", callback_data="c:third_lvl"),
         ],
