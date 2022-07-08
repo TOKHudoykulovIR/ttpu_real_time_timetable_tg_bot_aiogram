@@ -13,6 +13,10 @@ import os
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 
+class FSMMenu(StatesGroup):
+    first_lvl = State()
+    second_lvl = State()
+
 
 def data(message):
     user_id = int(message.chat.id)
