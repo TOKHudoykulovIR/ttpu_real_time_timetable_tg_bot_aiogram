@@ -29,7 +29,7 @@ def data(message):
     return user_id, user_name, user_text, time
 
 
-@dp.message_handler(commands=["admin"])
+@dp.message_handler(commands=["admin"], state="*")
 async def stats(message: types.Message):
     admin_id = os.getenv("admin_id")
     if int(message.from_user.id) == int(admin_id):
@@ -39,7 +39,7 @@ async def stats(message: types.Message):
 
 
 #  > > >  BASE COMMANDS
-@dp.message_handler(commands=['help'])
+@dp.message_handler(commands=['help'], state="*")
 async def send_welcome(message: types.Message):
     user_id, user_name, user_text, time = data(message)
     await add_user(user_id, user_name, user_text, time)
@@ -50,7 +50,7 @@ async def send_welcome(message: types.Message):
                          "𝟹.  𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿")
 
 
-@dp.message_handler(commands=['start'])
+@dp.message_handler(commands=['start'], state="*")
 async def show_keyboard_levels(message: types.Message):
     user_id, user_name, user_text, time = data(message)
     await add_user(user_id, user_name, user_text, time)
@@ -159,152 +159,24 @@ async def contacts(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=None)
 
 
-#
-#
-# @dp.message_handler(state=FSMMenu.course_catalog)
-# async def course_catalog_btn(message: types.Message, state: FSMContext):
-#     if message.text == "Back ⬅️":
-#         await message.answer("▷▷▷", reply_markup=menu_keyboard)
-#         await FSMMenu.menu_category_selection.set()
-#     elif message.text == "PY":
-#         await message.answer("""
-#                 №   Subject   Credits\n
-# 1   Mathematics     ➓
-# 2   Chemistry   ➒
-# 3   Physics     ➑
-# 4   Drawing     ➏
-# 5   Computer science    ➎
-# 6   English language (Technical)	➊➑
-# 7   History of Uzbekistan   ➍
-# 8   Constitution of Republic of Uzbekistan  ➋
-# 9   Economics	➍
-# 10  Russian Language
-# 11  Physical training\n
-# Total   ➏➏
-#                 """, reply_markup=ReplyKeyboardRemove())
-#         await state.finish()
-#     elif message.text == "1-ST LEVEL":
-#         await message.answer("▷▷▷", reply_markup=faculty_keyboard)
-#         await FSMMenu.faculty_first_lvl.set()
-#     elif message.text == "2-ND LEVEL":
-#         await message.answer("▷▷▷", reply_markup=faculty_keyboard)
-#         await FSMMenu.faculty_scnd_lvl.set()
-#     elif message.text == "3-RD LEVEL":
-#         await message.answer("▷▷▷", reply_markup=faculty_keyboard)
-#         await FSMMenu.faculty_third_lvl.set()
-#
-#
-# @dp.message_handler(state=FSMMenu.faculty_first_lvl)
-# async def first_lvl_btn(message: types.Message, state: FSMContext):
-#     if message.text == "ME":
-#         print("me catalog 1st lvl")
-#         await message.answer("""
-#                 №	    subjects    	credits\n
-# 1	    chemistry 	    8️⃣
-# 2	    math. analysis I    	🔟
-# 3	    computer science	    8️⃣
-# 4	    lin. algebra and geometry I 	6️⃣
-# 5	    lin. algebra and geometry II	    4️⃣
-# 6	    physics I	    🔟
-# 7	    math. analysis II	    8️⃣
-# 8	    engineering drawing 	6️⃣\n
-# 🟰   6️⃣0️⃣
-# """, reply_markup=ReplyKeyboardRemove())
-#         await state.finish()
-#     elif message.text == "IT":
-#         print("it catalog 1st lvl")
-#         await message.answer("""
-#                  №	    subjects    	credits\n
-# 1	    chemistry 	8️⃣
-# 2	    mathematical analysis I	🔟
-# 3	    computer science	8️⃣
-# 4	    linear algebra and geometry I	6️⃣
-# 5	    linear algebra and geometry II	4️⃣
-# 6	    physics I	🔟
-# 7	    mathematical analysis II	8️⃣
-# 8	    algorithms and programming I	6️⃣\n
-# total   6️⃣0️⃣
-# """, reply_markup=ReplyKeyboardRemove())
-#         await state.finish()
-#     elif message.text == "CIE":
-#         print("cie faculty 1st lvl")
-#         await message.answer("""
-#                 №	    subjects    	credits\n
-# 1	    chemistry 	8️⃣
-# 2	    mathematical analysis I 	🔟
-# 3	    computer science 	8️⃣
-# 4	    linear algebra and geometry I  	6️⃣
-# 5	    linear algebra and geometry II 	4️⃣
-# 6	    physics I 	🔟
-# 7	    mathematical analysis II 	8️⃣
-# 8	    drawing	 6️⃣\n
-# total   6️⃣0️⃣
-# """, reply_markup=ReplyKeyboardRemove())
-#         await state.finish()
-#     elif message.text == "Back ⬅️":
-#         await message.answer('▷▷▷', reply_markup=course_keyboard)
-#         await FSMMenu.course_catalog.set()
-#
-#
-# @dp.message_handler(state=FSMMenu.faculty_scnd_lvl)
-# async def second_lvl_btn(message: types.Message, state: FSMContext):
-#     if message.text == "ME":
-#         print("me catalog 2nd lvl")
-#         await message.answer("""
-#                №         subjects    	credits\n
-# 1️⃣      Physics II ➖   𝟲
-# 2️⃣	    Fundam. of Eng. Thermodynamics and heat transfer    ➖   𝟴
-# 3️⃣	    Experimental Statistics and Mechanical Measurements ➖   𝟲
-# 4️⃣	    Introduction to electrical engineering / Electrical machines    ➖   𝟭𝟬
-# 5️⃣	    Science & Technology of Materials (MEC) ➖    𝟱
-# 6️⃣	    Technology of Metallic Materials    ➖   𝟱
-# 7️⃣      Applied mechanics  ➖   𝟭𝟬
-# 8️⃣      Fundamentals of strength of materials  ➖   𝟴
-# total   𝟲𝟮""", reply_markup=ReplyKeyboardRemove())
-#         await state.finish()
-#
-#     elif message.text == "IT":
-#         print("it catalog 2nd lvl")
-#         await message.answer("""
-#                 №	    subjects    	credits\n
-# 1️⃣      Physics II ➖   𝟲
-# 2️⃣	 	Circuit Theory  ➖   𝟴
-# 3️⃣	 	Databases   ➖   𝟴
-# 4️⃣	 	Algorithms and Programming 2    ➖   𝟲
-# 5️⃣	 	Object-oriented programming ➖   𝟲
-# 6️⃣	 	Electronic Systems and Technologies ➖   𝟭𝟬
-# 7️⃣	 	Computer architectures  ➖   𝟴
-# 8️⃣	 	Mathematical methods A	➖   𝟰
-# 9️⃣	 	Mathematical methods B  ➖   𝟲
-# total   𝟲𝟮""", reply_markup=ReplyKeyboardRemove())
-#         await state.finish()
-#
-#     elif message.text == "CIE":
-#         print("cie catalog 2nd lvl")
-#         await message.answer("""
-#                 №	    subjects    	credits\n
-# 1️⃣      Physics II ➖   𝟲
-# 2️⃣	    Fundam. of Eng. Thermodynamics and heat transfer    ➖   𝟴
-# 3️⃣	 	Science & Technology of Materials (CIV) ➖   𝟲
-# 4️⃣	 	Geology / Safety and civil protection   ➖   𝟴
-# 5️⃣	    Analytical Mechanics    ➖   𝟴
-# 6️⃣	    Statistical Methods for Engineering ➖   𝟰
-# 7️⃣	    Structural Mechanics    ➖   𝟭𝟮
-# 8️⃣	    Land Surveying  ➖   𝟴
-# total   𝟲𝟮""", reply_markup=ReplyKeyboardRemove())
-#         await state.finish()
-#
-#     elif message.text == "Back ⬅️":
-#         await message.answer('▷▷▷', reply_markup=course_keyboard)
-#         await FSMMenu.course_catalog.set()
-#
-
-
-
 
 @dp.callback_query_handler(cd_course.filter(course="py"))
 async def py_catalog(call: CallbackQuery):
-    await call.message.answer('PREFPp catalog')
+    await call.message.answer("""
+                №   Subject   Credits\n
+1   Mathematics     ➓
+2   Chemistry   ➒
+3   Physics     ➑
+4   Drawing     ➏
+5   Computer science    ➎
+6   English language (Technical)	➊➑
+7   History of Uzbekistan   ➍
+8   Constitution of Republic of Uzbekistan  ➋
+9   Economics	➍
+10  Russian Language
+11  Physical training\n
+Total   ➏➏
+                 """)
     await call.message.edit_reply_markup(reply_markup=None)
 
 
@@ -336,51 +208,115 @@ async def third_lvl_catalog(call: CallbackQuery):
 
 @dp.callback_query_handler(cd_faculty.filter(faculty=["me"]), state=FSMMenu.first_lvl)
 async def me_first_catalog(call: CallbackQuery, state: FSMContext):
-    await call.message.answer('here will be ME CAtaLOG for 1st lvl')
+    await call.message.answer("""
+                №	    subjects    	credits\n
+1	    chemistry 	    8️⃣
+2	    math. analysis I    	🔟
+3	    computer science	    8️⃣
+4	    lin. algebra and geometry I 	6️⃣
+5	    lin. algebra and geometry II	    4️⃣
+6	    physics I	    🔟
+7	    math. analysis II	    8️⃣
+8	    engineering drawing 	6️⃣\n
+🟰   6️⃣0️⃣
+""")
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 @dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.first_lvl)
 async def it_first_catalog(call: CallbackQuery, state: FSMContext):
-    await call.message.answer('here will be IT CAtaLOG for 1st lvl')
+    await call.message.answer("""
+                 №	    subjects    	credits\n
+1	    chemistry 	8️⃣
+2	    mathematical analysis I	🔟
+3	    computer science	8️⃣
+4	    linear algebra and geometry I	6️⃣
+5	    linear algebra and geometry II	4️⃣
+6	    physics I	🔟
+7	    mathematical analysis II	8️⃣
+8	    algorithms and programming I	6️⃣\n
+total   6️⃣0️⃣
+""")
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 @dp.callback_query_handler(cd_faculty.filter(faculty="cie"), state=FSMMenu.first_lvl)
 async def cie_first_catalog(call: CallbackQuery, state: FSMContext):
-    await call.message.answer('here will be CIE CAtaLOG for 1st lvl')
+    await call.message.answer("""
+                №	    subjects    	credits\n
+1	    chemistry 	8️⃣
+2	    mathematical analysis I 	🔟
+3	    computer science 	8️⃣
+4	    linear algebra and geometry I  	6️⃣
+5	    linear algebra and geometry II 	4️⃣
+6	    physics I 	🔟
+7	    mathematical analysis II 	8️⃣
+8	    drawing	 6️⃣\n
+total   6️⃣0️⃣
+""")
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 
 
 @dp.callback_query_handler(cd_faculty.filter(faculty="me"), state=FSMMenu.second_lvl)
 async def me_second_catalog(call: CallbackQuery, state: FSMContext):
-    await call.message.answer('here will be ME CAtaLOG for 2st lvl')
+    await call.message.answer("""
+               №         subjects    	credits\n
+1️⃣      Physics II ➖   𝟲
+2️⃣	    Fundam. of Eng. Thermodynamics and heat transfer    ➖   𝟴
+3️⃣	    Experimental Statistics and Mechanical Measurements ➖   𝟲
+4️⃣	    Introduction to electrical engineering / Electrical machines    ➖   𝟭𝟬
+5️⃣	    Science & Technology of Materials (MEC) ➖    𝟱
+6️⃣	    Technology of Metallic Materials    ➖   𝟱
+7️⃣      Applied mechanics  ➖   𝟭𝟬
+8️⃣      Fundamentals of strength of materials  ➖   𝟴
+total   𝟲𝟮""")
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 @dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.second_lvl)
 async def it_second_catalog(call: CallbackQuery, state: FSMContext):
-    await call.message.answer('here will be IT CAtaLOG for 2st lvl')
+    await call.message.answer("""
+                №	    subjects    	credits\n
+1️⃣      Physics II ➖   𝟲
+2️⃣	 	Circuit Theory  ➖   𝟴
+3️⃣	 	Databases   ➖   𝟴
+4️⃣	 	Algorithms and Programming 2    ➖   𝟲
+5️⃣	 	Object-oriented programming ➖   𝟲
+6️⃣	 	Electronic Systems and Technologies ➖   𝟭𝟬
+7️⃣	 	Computer architectures  ➖   𝟴
+8️⃣	 	Mathematical methods A	➖   𝟰
+9️⃣	 	Mathematical methods B  ➖   𝟲
+total   𝟲𝟮""")
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 @dp.callback_query_handler(cd_faculty.filter(faculty="cie"), state=FSMMenu.second_lvl)
 async def cie_second_catalog(call: CallbackQuery, state: FSMContext):
-    await call.message.answer('here will be CIE CAtaLOG for 2st lvl')
+    await call.message.answer("""
+                №	    subjects    	credits\n
+1️⃣      Physics II ➖   𝟲
+2️⃣	    Fundam. of Eng. Thermodynamics and heat transfer    ➖   𝟴
+3️⃣	 	Science & Technology of Materials (CIV) ➖   𝟲
+4️⃣	 	Geology / Safety and civil protection   ➖   𝟴
+5️⃣	    Analytical Mechanics    ➖   𝟴
+6️⃣	    Statistical Methods for Engineering ➖   𝟰
+7️⃣	    Structural Mechanics    ➖   𝟭𝟮
+8️⃣	    Land Surveying  ➖   𝟴
+total   𝟲𝟮""")
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 
 
 
 @dp.callback_query_handler(cd_faculty.filter(faculty=["me"]), state=FSMMenu.third_lvl)
-async def me_first_catalog(call: CallbackQuery, state: FSMContext):
+async def me_third_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer('here will be ME CAtaLOG for 3rd lvl')
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 @dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.third_lvl)
-async def it_first_catalog(call: CallbackQuery, state: FSMContext):
+async def it_third_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer('here will be IT CAtaLOG for 3rd lvl')
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 @dp.callback_query_handler(cd_faculty.filter(faculty="cie"), state=FSMMenu.third_lvl)
-async def cie_first_catalog(call: CallbackQuery, state: FSMContext):
+async def cie_third_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer('here will be CIE CAtaLOG for 3rd lvl')
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
@@ -392,42 +328,85 @@ async def cie_first_catalog(call: CallbackQuery, state: FSMContext):
 
 
 
-
-
-
-
-
-
 @dp.callback_query_handler(cd_tel_num.filter(owner="rector"))
-async def contacts(call: CallbackQuery):
+async def rector_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-70-82')
     await call.message.edit_reply_markup(reply_markup=None)
 
 
 @dp.callback_query_handler(cd_tel_num.filter(owner="finance"))
-async def contacts(call: CallbackQuery):
+async def finance_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-10-25')
     await call.message.edit_reply_markup(reply_markup=None)
 
 
 @dp.callback_query_handler(cd_tel_num.filter(owner="accounting"))
-async def contacts(call: CallbackQuery):
+async def accountant_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-20-79')
     await call.message.edit_reply_markup(reply_markup=None)
 
 
 @dp.callback_query_handler(cd_tel_num.filter(owner="hr"))
-async def contacts(call: CallbackQuery):
+async def hr_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-20-53')
     await call.message.edit_reply_markup(reply_markup=None)
 
+@dp.callback_query_handler(cd_tel_num.filter(owner="post"))
+async def post_contact(call: CallbackQuery):
+    await call.message.answer('+998(71)246-60-92')
+    await call.message.edit_reply_markup(reply_markup=None)
+
+@dp.callback_query_handler(cd_tel_num.filter(owner="strategy"))
+async def strategy_contact(call: CallbackQuery):
+    await call.message.answer('+998(71)246-50-92')
+    await call.message.edit_reply_markup(reply_markup=None)
+
+@dp.callback_query_handler(cd_tel_num.filter(owner="inter"))
+async def inter_contact(call: CallbackQuery):
+    await call.message.answer('+998(71)246-30-67')
+    await call.message.edit_reply_markup(reply_markup=None)
+
+@dp.callback_query_handler(cd_tel_num.filter(owner="it-dep"))
+async def it_dep_contact(call: CallbackQuery):
+    await call.message.answer('+998(71)246-63-87')
+    await call.message.edit_reply_markup(reply_markup=None)
+
+@dp.callback_query_handler(cd_tel_num.filter(owner="marketing"))
+async def marketing_contact(call: CallbackQuery):
+    await call.message.answer('+998(71)246-40-87')
+    await call.message.edit_reply_markup(reply_markup=None)
+
+@dp.callback_query_handler(cd_tel_num.filter(owner="deans"))
+async def deans_contacts(call: CallbackQuery):
+    await call.message.answer('+998(71)246-80-52')
+    await call.message.edit_reply_markup(reply_markup=None)
+
+@dp.callback_query_handler(cd_tel_num.filter(owner="working-youth"))
+async def working_youth_contact(call: CallbackQuery):
+    await call.message.answer('+998(71)246-30-73')
+    await call.message.edit_reply_markup(reply_markup=None)
+
+@dp.callback_query_handler(cd_tel_num.filter(owner="irc"))
+async def irc_contact(call: CallbackQuery):
+    await call.message.answer('+998(71)246-50-32')
+    await call.message.edit_reply_markup(reply_markup=None)
+
+@dp.callback_query_handler(cd_tel_num.filter(owner="sport"))
+async def sport_contact(call: CallbackQuery):
+    await call.message.answer('+998(71)246-50-79')
+    await call.message.edit_reply_markup(reply_markup=None)
+
+@dp.callback_query_handler(cd_tel_num.filter(owner="mediacal"))
+async def med_contact(call: CallbackQuery):
+    await call.message.answer('+998(71)246-30-73')
+    await call.message.edit_reply_markup(reply_markup=None)
 
 @dp.callback_query_handler(cd_tel_num.filter(owner="back"))
-async def contacts(call: CallbackQuery):
+async def back(call: CallbackQuery):
     await call.message.answer('turins contacts', reply_markup=tel_numbers_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
 
-#
+
 # @dp.message_handler(state=FSMMenu.tel_number)
 # async def turin_s_contacts_btn(message: types.Message, state: FSMContext):
 #     if message.text == "Back ⬅️":
