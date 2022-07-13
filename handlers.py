@@ -201,6 +201,7 @@ async def third_lvl_catalog(call: CallbackQuery):
 @dp.callback_query_handler(cd_course.filter(course=["back"]))
 async def third_lvl_catalog(call: CallbackQuery):
     await call.message.answer("choose category ↘︎", reply_markup=menu_keyboard)
+    await call.message.edit_reply_markup(reply_markup=None)
 
 
 
@@ -421,3 +422,4 @@ async def med_contact(call: CallbackQuery):
 @dp.callback_query_handler(cd_tel_num.filter(owner="back"))
 async def back(call: CallbackQuery):
     await call.message.answer("choose category ↘︎", reply_markup=menu_keyboard)
+    await call.message.edit_reply_markup(reply_markup=None)
