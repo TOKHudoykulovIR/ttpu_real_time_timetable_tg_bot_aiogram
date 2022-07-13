@@ -198,6 +198,13 @@ async def third_lvl_catalog(call: CallbackQuery):
     await FSMMenu.third_lvl.set()
 
 
+@dp.callback_query_handler(cd_course.filter(course=["back"]))
+async def third_lvl_catalog(call: CallbackQuery):
+    await call.message.answer("choose category ↘︎", reply_markup=menu_keyboard)
+
+
+
+
 @dp.callback_query_handler(cd_faculty.filter(faculty=["me"]), state=FSMMenu.first_lvl)
 async def me_first_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer("""
@@ -413,5 +420,4 @@ async def med_contact(call: CallbackQuery):
 
 @dp.callback_query_handler(cd_tel_num.filter(owner="back"))
 async def back(call: CallbackQuery):
-    await call.message.answer('turins contacts', reply_markup=tel_numbers_keyboard)
-    await call.message.edit_reply_markup(reply_markup=None)
+    await call.message.answer("choose category ↘︎", reply_markup=menu_keyboard)
