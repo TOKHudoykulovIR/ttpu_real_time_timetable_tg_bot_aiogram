@@ -149,9 +149,7 @@ async def groups_year_19(call: CallbackQuery):
 
 @dp.callback_query_handler(cd_menu.filter(category="catalog"))
 async def catalog(call: CallbackQuery):
-    print("checkpoint menu1")
     await call.message.answer('catalog of subjects', reply_markup=course_keyboard)
-    print("checkpoint menu2")
     await call.message.edit_reply_markup(reply_markup=None)
 
 
@@ -205,7 +203,7 @@ async def third_lvl_catalog(call: CallbackQuery):
 
 
 @dp.callback_query_handler(cd_course.filter(course=["back"]))
-async def third_lvl_catalog(call: CallbackQuery):
+async def back_catalog(call: CallbackQuery):
     await call.message.answer("choose category ↘︎", reply_markup=menu_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
 
@@ -229,7 +227,6 @@ async def me_first_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 
-
 @dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.first_lvl)
 async def it_first_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer("""
@@ -246,7 +243,6 @@ total   6️⃣0️⃣
 """)
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
-
 
 @dp.callback_query_handler(cd_faculty.filter(faculty="cie"), state=FSMMenu.first_lvl)
 async def cie_first_catalog(call: CallbackQuery, state: FSMContext):
@@ -266,6 +262,7 @@ total   6️⃣0️⃣
     await state.finish()
 
 
+
 @dp.callback_query_handler(cd_faculty.filter(faculty="me"), state=FSMMenu.second_lvl)
 async def me_second_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer("""
@@ -281,7 +278,6 @@ async def me_second_catalog(call: CallbackQuery, state: FSMContext):
 total   𝟲𝟮""")
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
-
 
 @dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.second_lvl)
 async def it_second_catalog(call: CallbackQuery, state: FSMContext):
@@ -300,7 +296,6 @@ total   𝟲𝟮""")
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 
-
 @dp.callback_query_handler(cd_faculty.filter(faculty="cie"), state=FSMMenu.second_lvl)
 async def cie_second_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer("""
@@ -316,6 +311,13 @@ async def cie_second_catalog(call: CallbackQuery, state: FSMContext):
 total   𝟲𝟮""")
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
+
+@dp.callback_query_handler(cd_faculty.filter(faculty="back"), state=FSMMenu.second_lvl)
+async def back_second_catalog(call: CallbackQuery, state: FSMContext):
+    await call.message.answer('catalog of subjects', reply_markup=course_keyboard)
+    await call.message.edit_reply_markup(reply_markup=None)
+    await state.finish()
+
 
 
 @dp.callback_query_handler(cd_faculty.filter(faculty=["me"]), state=FSMMenu.third_lvl)
@@ -338,10 +340,12 @@ async def cie_third_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 
-@dp.callback_query_handler(cd_faculty.filter(faculty="back"))
-async def cie_third_catalog(call: CallbackQuery):
-    await call.message.answer("choose category ↘︎", reply_markup=course_keyboard)
+
+@dp.callback_query_handler(cd_faculty.filter(faculty="back"), state=FSMMenu.third_lvl)
+async def back_third_catalog(call: CallbackQuery, state: FSMContext):
+    await call.message.answer('catalog of subjects', reply_markup=course_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
+    await state.finish()
 
 
 
@@ -351,84 +355,70 @@ async def rector_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-70-82')
     await call.message.edit_reply_markup(reply_markup=None)
 
-
 @dp.callback_query_handler(cd_tel_num.filter(owner="finance"))
 async def finance_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-10-25')
     await call.message.edit_reply_markup(reply_markup=None)
-
 
 @dp.callback_query_handler(cd_tel_num.filter(owner="accounting"))
 async def accountant_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-20-79')
     await call.message.edit_reply_markup(reply_markup=None)
 
-
 @dp.callback_query_handler(cd_tel_num.filter(owner="hr"))
 async def hr_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-20-53')
     await call.message.edit_reply_markup(reply_markup=None)
-
 
 @dp.callback_query_handler(cd_tel_num.filter(owner="post"))
 async def post_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-60-92')
     await call.message.edit_reply_markup(reply_markup=None)
 
-
 @dp.callback_query_handler(cd_tel_num.filter(owner="strategy"))
 async def strategy_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-50-92')
     await call.message.edit_reply_markup(reply_markup=None)
-
 
 @dp.callback_query_handler(cd_tel_num.filter(owner="inter"))
 async def inter_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-30-67')
     await call.message.edit_reply_markup(reply_markup=None)
 
-
 @dp.callback_query_handler(cd_tel_num.filter(owner="it-dep"))
 async def it_dep_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-63-87')
     await call.message.edit_reply_markup(reply_markup=None)
-
 
 @dp.callback_query_handler(cd_tel_num.filter(owner="marketing"))
 async def marketing_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-40-87')
     await call.message.edit_reply_markup(reply_markup=None)
 
-
 @dp.callback_query_handler(cd_tel_num.filter(owner="deans"))
 async def deans_contacts(call: CallbackQuery):
     await call.message.answer('+998(71)246-80-52')
     await call.message.edit_reply_markup(reply_markup=None)
-
 
 @dp.callback_query_handler(cd_tel_num.filter(owner="working-youth"))
 async def working_youth_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-30-73')
     await call.message.edit_reply_markup(reply_markup=None)
 
-
 @dp.callback_query_handler(cd_tel_num.filter(owner="irc"))
 async def irc_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-50-32')
     await call.message.edit_reply_markup(reply_markup=None)
-
 
 @dp.callback_query_handler(cd_tel_num.filter(owner="sport"))
 async def sport_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-50-79')
     await call.message.edit_reply_markup(reply_markup=None)
 
-
 @dp.callback_query_handler(cd_tel_num.filter(owner="medical"))
 async def med_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-30-73')
     await call.message.edit_reply_markup(reply_markup=None)
-
 
 @dp.callback_query_handler(cd_tel_num.filter(owner="back"))
 async def back(call: CallbackQuery):
