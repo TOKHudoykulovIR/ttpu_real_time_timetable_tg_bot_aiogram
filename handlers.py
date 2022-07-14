@@ -22,10 +22,8 @@ def data(message):
     user_id = int(message.chat.id)
     user_name = str(message.chat.full_name)
     print(user_id, user_name)
-    print("checkpoint 1")
     user_text = str(message.text)
     time = datetime.datetime.now()
-    print("checkpoint 2")
     return user_id, user_name, user_text, time
 
 
@@ -61,10 +59,8 @@ async def show_keyboard_levels(message: types.Message):
 @dp.message_handler(commands=['menu'], state="*")
 async def show_keyboard_categories(message: types.Message):
     user_id, user_name, user_text, time = data(message)
-    print("checkpoint 3")
     await add_user(user_id, user_name, user_text, time)
-    print("checkpoint 4")
-    await message.answer("choose category ↘︎", reply_markup=menu_keyboard)
+    await message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈", reply_markup=menu_keyboard)
 
 
 #  < < <
@@ -149,13 +145,13 @@ async def groups_year_19(call: CallbackQuery):
 
 @dp.callback_query_handler(cd_menu.filter(category="catalog"))
 async def catalog(call: CallbackQuery):
-    await call.message.answer('catalog of subjects', reply_markup=course_keyboard)
+    await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝙻𝙴𝚅𝙴𝙻', reply_markup=course_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
 
 
 @dp.callback_query_handler(cd_menu.filter(category="contacts"))
 async def contacts(call: CallbackQuery):
-    await call.message.answer('turins contacts', reply_markup=tel_numbers_keyboard)
+    await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙾𝙽𝚃𝙰𝙲𝚃', reply_markup=tel_numbers_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
 
 
@@ -258,6 +254,12 @@ async def cie_first_catalog(call: CallbackQuery, state: FSMContext):
 8	    drawing	 6️⃣\n
 total   6️⃣0️⃣
 """)
+    await call.message.edit_reply_markup(reply_markup=None)
+    await state.finish()
+
+@dp.callback_query_handler(cd_faculty.filter(faculty="back"), state=FSMMenu.first_lvl)
+async def back_first_catalog(call: CallbackQuery, state: FSMContext):
+    await call.message.answer('catalog of subjects', reply_markup=course_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 
