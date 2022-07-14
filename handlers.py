@@ -338,6 +338,11 @@ async def cie_third_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 
+@dp.callback_query_handler(cd_faculty.filter(faculty="back"))
+async def cie_third_catalog(call: CallbackQuery):
+    await call.message.answer("choose category ↘︎", reply_markup=course_keyboard)
+    await call.message.edit_reply_markup(reply_markup=None)
+
 
 
 
