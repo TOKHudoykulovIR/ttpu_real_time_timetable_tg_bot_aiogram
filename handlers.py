@@ -22,8 +22,10 @@ def data(message):
     user_id = int(message.chat.id)
     user_name = str(message.chat.full_name)
     print(user_id, user_name)
+    print("checkpoint 1")
     user_text = str(message.text)
     time = datetime.datetime.now()
+    print("checkpoint 2")
     return user_id, user_name, user_text, time
 
 
@@ -59,7 +61,9 @@ async def show_keyboard_levels(message: types.Message):
 @dp.message_handler(commands=['menu'], state="*")
 async def show_keyboard_categories(message: types.Message):
     user_id, user_name, user_text, time = data(message)
+    print("checkpoint 3")
     await add_user(user_id, user_name, user_text, time)
+    print("checkpoint 4")
     await message.answer("choose category ↘︎", reply_markup=menu_keyboard)
 
 
@@ -145,7 +149,9 @@ async def groups_year_19(call: CallbackQuery):
 
 @dp.callback_query_handler(cd_menu.filter(category="catalog"))
 async def catalog(call: CallbackQuery):
+    print("checkpoint menu1")
     await call.message.answer('catalog of subjects', reply_markup=course_keyboard)
+    print("checkpoint menu2")
     await call.message.edit_reply_markup(reply_markup=None)
 
 
@@ -413,7 +419,7 @@ async def sport_contact(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=None)
 
 
-@dp.callback_query_handler(cd_tel_num.filter(owner="mediacal"))
+@dp.callback_query_handler(cd_tel_num.filter(owner="medical"))
 async def med_contact(call: CallbackQuery):
     await call.message.answer('+998(71)246-30-73')
     await call.message.edit_reply_markup(reply_markup=None)
