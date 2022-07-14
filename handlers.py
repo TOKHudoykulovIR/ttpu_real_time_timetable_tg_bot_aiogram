@@ -160,7 +160,7 @@ async def contacts(call: CallbackQuery):
 @dp.callback_query_handler(cd_course.filter(course="py"))
 async def py_catalog(call: CallbackQuery):
     await call.message.answer("""
-                №   Subject   Credits\n
+                №   𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜   𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
 1️⃣   Mathematics   ➖   ⑩
 2️⃣   Chemistry ➖   ⑨
 3️⃣   Physics   ➖  ⑧
