@@ -161,17 +161,17 @@ async def contacts(call: CallbackQuery):
 async def py_catalog(call: CallbackQuery):
     await call.message.answer("""
                 №   Subject   Credits\n
-1   Mathematics     ➓
-2   Chemistry   ➒
-3   Physics     ➑
-4   Drawing     ➏
-5   Computer science    ➎
-6   English language (Technical)	➊➑
-7   History of Uzbekistan   ➍
-8   Constitution of Republic of Uzbekistan  ➋
-9   Economics	➍
-10  Russian Language
-11  Physical training\n
+1️⃣   Mathematics   ➖   ➓
+2️⃣   Chemistry ➖   ➒
+3️⃣   Physics   ➖  ➑
+4️⃣   Drawing   ➖  ➏
+5️⃣   Computer science  ➖   ➎
+6️⃣   English language (Technical)  ➖   ➊➑
+7️⃣   History of Uzbekistan ➖   ➍
+8️⃣   Constitution of Republic of Uzbekistan    ➖   ➋
+9️⃣   Economics ➖   ➍
+⏺  Russian Language
+⏺  Physical training\n
 Total   ➏➏
                  """)
     await call.message.edit_reply_markup(reply_markup=None)
@@ -210,14 +210,14 @@ async def back_catalog(call: CallbackQuery):
 async def me_first_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer("""
                 №	    subjects    	credits\n
-1	    chemistry 	    8️⃣
-2	    math. analysis I    	🔟
-3	    computer science	    8️⃣
-4	    lin. algebra and geometry I 	6️⃣
-5	    lin. algebra and geometry II	    4️⃣
-6	    physics I	    🔟
-7	    math. analysis II	    8️⃣
-8	    engineering drawing 	6️⃣\n
+1️⃣	    chemistry 	    8️⃣
+2️⃣	    math. analysis I    	🔟
+3️⃣	    computer science	    8️⃣
+4️⃣	    lin. algebra and geometry I 	6️⃣
+5️⃣	    lin. algebra and geometry II	    4️⃣
+6️⃣	    physics I	    🔟
+7️⃣	    math. analysis II	    8️⃣
+8️⃣	    engineering drawing 	6️⃣\n
 🟰   6️⃣0️⃣
 """)
     await call.message.edit_reply_markup(reply_markup=None)
@@ -227,14 +227,14 @@ async def me_first_catalog(call: CallbackQuery, state: FSMContext):
 async def it_first_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer("""
                  №	    subjects    	credits\n
-1	    chemistry 	8️⃣
-2	    mathematical analysis I	🔟
-3	    computer science	8️⃣
-4	    linear algebra and geometry I	6️⃣
-5	    linear algebra and geometry II	4️⃣
-6	    physics I	🔟
-7	    mathematical analysis II	8️⃣
-8	    algorithms and programming I	6️⃣\n
+1️⃣	    chemistry 	8️⃣
+2️⃣	    mathematical analysis I	🔟
+3️⃣	    computer science	8️⃣
+4️⃣	    linear algebra and geometry I	6️⃣
+5️⃣	    linear algebra and geometry II	4️⃣
+6️⃣	    physics I	🔟
+7️⃣	    mathematical analysis II	8️⃣
+8️⃣	    algorithms and programming I	6️⃣\n
 total   6️⃣0️⃣
 """)
     await call.message.edit_reply_markup(reply_markup=None)
@@ -244,14 +244,14 @@ total   6️⃣0️⃣
 async def cie_first_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer("""
                 №	    subjects    	credits\n
-1	    chemistry 	8️⃣
-2	    mathematical analysis I 	🔟
-3	    computer science 	8️⃣
-4	    linear algebra and geometry I  	6️⃣
-5	    linear algebra and geometry II 	4️⃣
-6	    physics I 	🔟
-7	    mathematical analysis II 	8️⃣
-8	    drawing	 6️⃣\n
+1️⃣	    chemistry 	8️⃣
+2️⃣	    mathematical analysis I 	🔟
+3️⃣	    computer science 	8️⃣
+4️⃣	    linear algebra and geometry I  	6️⃣
+5️⃣	    linear algebra and geometry II 	4️⃣
+6️⃣	    physics I 	🔟
+7️⃣	    mathematical analysis II 	8️⃣
+8️⃣	    drawing	 6️⃣\n
 total   6️⃣0️⃣
 """)
     await call.message.edit_reply_markup(reply_markup=None)
