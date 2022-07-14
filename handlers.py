@@ -179,28 +179,28 @@ Total   ➏➏
 
 @dp.callback_query_handler(cd_course.filter(course="first_lvl"))
 async def first_lvl_catalog(call: CallbackQuery):
-    await call.message.answer('choose faculty', reply_markup=faculty_keyboard)
+    await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴︎ 𝙵𝙰𝙲𝚄𝙻𝚃𝚈', reply_markup=faculty_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
     await FSMMenu.first_lvl.set()
 
 
 @dp.callback_query_handler(cd_course.filter(course=["second_lvl"]))
 async def second_lvl_catalog(call: CallbackQuery):
-    await call.message.answer('choose faculty', reply_markup=faculty_keyboard)
+    await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴︎ 𝙵𝙰𝙲𝚄𝙻𝚃𝚈', reply_markup=faculty_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
     await FSMMenu.second_lvl.set()
 
 
 @dp.callback_query_handler(cd_course.filter(course=["third_lvl"]))
 async def third_lvl_catalog(call: CallbackQuery):
-    await call.message.answer('choose faculty', reply_markup=faculty_keyboard)
+    await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴︎ 𝙵𝙰𝙲𝚄𝙻𝚃𝚈', reply_markup=faculty_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
     await FSMMenu.third_lvl.set()
 
 
 @dp.callback_query_handler(cd_course.filter(course=["back"]))
 async def back_catalog(call: CallbackQuery):
-    await call.message.answer("choose category ↘︎", reply_markup=menu_keyboard)
+    await call.message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈︎", reply_markup=menu_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
 
 
@@ -259,7 +259,7 @@ total   6️⃣0️⃣
 
 @dp.callback_query_handler(cd_faculty.filter(faculty="back"), state=FSMMenu.first_lvl)
 async def back_first_catalog(call: CallbackQuery, state: FSMContext):
-    await call.message.answer('catalog of subjects', reply_markup=course_keyboard)
+    await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝙻𝙴𝚅𝙴𝙻', reply_markup=course_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 
@@ -316,7 +316,7 @@ total   𝟲𝟮""")
 
 @dp.callback_query_handler(cd_faculty.filter(faculty="back"), state=FSMMenu.second_lvl)
 async def back_second_catalog(call: CallbackQuery, state: FSMContext):
-    await call.message.answer('catalog of subjects', reply_markup=course_keyboard)
+    await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝙻𝙴𝚅𝙴𝙻', reply_markup=course_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 
@@ -345,7 +345,7 @@ async def cie_third_catalog(call: CallbackQuery, state: FSMContext):
 
 @dp.callback_query_handler(cd_faculty.filter(faculty="back"), state=FSMMenu.third_lvl)
 async def back_third_catalog(call: CallbackQuery, state: FSMContext):
-    await call.message.answer('catalog of subjects', reply_markup=course_keyboard)
+    await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝙻𝙴𝚅𝙴𝙻', reply_markup=course_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 
@@ -424,5 +424,5 @@ async def med_contact(call: CallbackQuery):
 
 @dp.callback_query_handler(cd_tel_num.filter(owner="back"))
 async def back(call: CallbackQuery):
-    await call.message.answer("choose category ↘︎", reply_markup=menu_keyboard)
+    await call.message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈︎", reply_markup=menu_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)

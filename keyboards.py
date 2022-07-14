@@ -88,7 +88,7 @@ cd_menu = CallbackData("menu", "category")
 menu_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="𝙲𝙾𝚄𝚁𝚂𝙴 𝙲𝙰𝚃𝙰𝙻𝙾𝙶 𝙱𝚈 𝙻𝙴𝚅𝙴𝙻𝚂 📋", callback_data="menu:catalog"),
+            InlineKeyboardButton(text="𝙲𝙾𝚄𝚁𝚂𝙴 𝙲𝙰𝚃𝙰𝙻𝙾𝙶 📋", callback_data="menu:catalog"),
             InlineKeyboardButton(text="𝚃𝚄𝚁𝙸𝙽'𝚂 𝙲𝙾𝙽𝚃𝙰𝙲𝚃𝚂 📞", callback_data="menu:contacts")
         ],
     ],
