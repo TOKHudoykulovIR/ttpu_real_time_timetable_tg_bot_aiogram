@@ -160,7 +160,7 @@ async def contacts(call: CallbackQuery):
 @dp.callback_query_handler(cd_course.filter(course="py"))
 async def py_catalog(call: CallbackQuery):
     await call.message.answer("""
-                №   𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜   𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
+                𝙽𝚘      𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜        𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
 1️⃣   Mathematics   ➖   ⑩
 2️⃣   Chemistry ➖   ⑨
 3️⃣   Physics   ➖  ⑧
@@ -209,7 +209,7 @@ async def back_catalog(call: CallbackQuery):
 @dp.callback_query_handler(cd_faculty.filter(faculty=["me"]), state=FSMMenu.first_lvl)
 async def me_first_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer("""
-                №	    subjects    	credits\n
+                𝙽𝚘      𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜        𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
 1️⃣	    chemistry   ➖   ⑧
 2️⃣	    math. analysis I    ➖   ⑩
 3️⃣	    computer science    ➖   ⑧
@@ -226,7 +226,7 @@ async def me_first_catalog(call: CallbackQuery, state: FSMContext):
 @dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.first_lvl)
 async def it_first_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer("""
-                 №	    subjects    	credits\n
+                 𝙽𝚘     𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜        𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
 1️⃣	    chemistry   ➖   ⑧
 2️⃣	    mathematical analysis I ➖   ⑩
 3️⃣	    computer science    ➖   ⑧
@@ -243,7 +243,7 @@ async def it_first_catalog(call: CallbackQuery, state: FSMContext):
 @dp.callback_query_handler(cd_faculty.filter(faculty="cie"), state=FSMMenu.first_lvl)
 async def cie_first_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer("""
-                №	    subjects    	credits\n
+                𝙽𝚘      𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜        𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
 1️⃣	    chemistry   ➖   ⑧
 2️⃣	    mathematical analysis I ➖   ⑩
 3️⃣	    computer science    ➖   ⑧
@@ -268,15 +268,15 @@ async def back_first_catalog(call: CallbackQuery, state: FSMContext):
 @dp.callback_query_handler(cd_faculty.filter(faculty="me"), state=FSMMenu.second_lvl)
 async def me_second_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer("""
-               №         subjects    	credits\n
-1️⃣      Physics II ➖   ⑥
-2️⃣	    Fundam. of Eng. Thermodynamics and heat transfer    ➖   ⑧
-3️⃣	    Experimental Statistics and Mechanical Measurements ➖   ⑥
-4️⃣	    Introduction to electrical engineering / Electrical machines    ➖   ⑩
-5️⃣	    Science & Technology of Materials (MEC) ➖    ⑤
-6️⃣	    Technology of Metallic Materials    ➖   ⑤
-7️⃣      Applied mechanics  ➖   ⑩
-8️⃣      Fundamentals of strength of materials  ➖   ⑧
+                 𝙽𝚘     𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜        𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
+1️⃣      𝚙𝚑𝚢𝚜𝚒𝚌𝚜 𝙸𝙸 ➖   ⑥
+2️⃣	    𝚏𝚞𝚗𝚍𝚊𝚖. 𝚘𝚏 𝚎𝚗𝚐. 𝚝𝚑𝚎𝚛𝚖𝚘𝚍𝚢𝚗𝚊𝚖𝚒𝚌𝚜 𝚊𝚗𝚍 𝚑𝚎𝚊𝚝 𝚝𝚛𝚊𝚗𝚜𝚏𝚎𝚛    ➖   ⑧
+3️⃣	    𝚎𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝𝚊𝚕 𝚜𝚝𝚊𝚝𝚒𝚜𝚝𝚒𝚌𝚜 𝚊𝚗𝚍 𝚖𝚎𝚌𝚑𝚊𝚗𝚒𝚌𝚊𝚕 𝚖𝚎𝚊𝚜𝚞𝚛𝚎𝚖𝚎𝚗𝚝𝚜 ➖   ⑥
+4️⃣	    𝚒𝚗𝚝𝚛𝚘𝚍𝚞𝚌𝚝𝚒𝚘𝚗 𝚝𝚘 𝚎𝚕𝚎𝚌𝚝𝚛𝚒𝚌𝚊𝚕 𝚎𝚗𝚐𝚒𝚗𝚎𝚎𝚛𝚒𝚗𝚐 / 𝚎𝚕𝚎𝚌𝚝𝚛𝚒𝚌𝚊𝚕 𝚖𝚊𝚌𝚑𝚒𝚗𝚎𝚜    ➖   ⑩
+5️⃣	    𝚜𝚌𝚒𝚎𝚗𝚌𝚎 & 𝚝𝚎𝚌𝚑𝚗𝚘𝚕𝚘𝚐𝚢 𝚘𝚏 𝚖𝚊𝚝𝚎𝚛𝚒𝚊𝚕𝚜 (𝚖𝚎𝚌) ➖    ⑤
+6️⃣	    𝚝𝚎𝚌𝚑𝚗𝚘𝚕𝚘𝚐𝚢 𝚘𝚏 𝚖𝚎𝚝𝚊𝚕𝚕𝚒𝚌 𝚖𝚊𝚝𝚎𝚛𝚒𝚊𝚕𝚜    ➖   ⑤
+7️⃣      𝚊𝚙𝚙𝚕𝚒𝚎𝚍 𝚖𝚎𝚌𝚑𝚊𝚗𝚒𝚌𝚜  ➖   ⑩
+8️⃣      f𝚞𝚗𝚍𝚊𝚖𝚎𝚗𝚝𝚊𝚕𝚜 𝚘𝚏 𝚜𝚝𝚛𝚎𝚗𝚐𝚝𝚑 𝚘𝚏 𝚖𝚊𝚝𝚎𝚛𝚒𝚊𝚕𝚜  ➖   ⑧
 🧮   ⑥②""")
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
@@ -284,16 +284,16 @@ async def me_second_catalog(call: CallbackQuery, state: FSMContext):
 @dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.second_lvl)
 async def it_second_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer("""
-                №	    subjects    	credits\n
-1️⃣      Physics II ➖   ⑥
-2️⃣	 	Circuit Theory  ➖   ⑧
-3️⃣	 	Databases   ➖   ⑧
-4️⃣	 	Algorithms and Programming 2    ➖   ⑥
-5️⃣	 	Object-oriented programming ➖   ⑥
-6️⃣	 	Electronic Systems and Technologies ➖   ⑩
-7️⃣	 	Computer architectures  ➖   ⑧
-8️⃣	 	Mathematical methods A	➖   ④
-9️⃣	 	Mathematical methods B  ➖   ⑥
+                 𝙽𝚘     𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜        𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
+1️⃣      𝚙𝚑𝚢𝚜𝚒𝚌𝚜 𝙸𝙸 ➖   ⑥
+2️⃣	 	𝚌𝚒𝚛𝚌𝚞𝚒𝚝 𝚝𝚑𝚎𝚘𝚛𝚢  ➖   ⑧
+3️⃣	 	𝚍𝚊𝚝𝚊𝚋𝚊𝚜𝚎𝚜   ➖   ⑧
+4️⃣	 	𝚊𝚕𝚐𝚘𝚛𝚒𝚝𝚑𝚖𝚜 𝚊𝚗𝚍 𝚙𝚛𝚘𝚐𝚛𝚊𝚖𝚖𝚒𝚗𝚐 𝙸𝙸    ➖   ⑥
+5️⃣	 	𝚘𝚋𝚓𝚎𝚌𝚝-𝚘𝚛𝚒𝚎𝚗𝚝𝚎𝚍 𝚙𝚛𝚘𝚐𝚛𝚊𝚖𝚖𝚒𝚗𝚐 ➖   ⑥
+6️⃣	 	𝚎𝚕𝚎𝚌𝚝𝚛𝚘𝚗𝚒𝚌 𝚜𝚢𝚜𝚝𝚎𝚖𝚜 𝚊𝚗𝚍 𝚝𝚎𝚌𝚑𝚗𝚘𝚕𝚘𝚐𝚒𝚎𝚜 ➖   ⑩
+7️⃣	 	𝚌𝚘𝚖𝚙𝚞𝚝𝚎𝚛 𝚊𝚛𝚌𝚑𝚒𝚝𝚎𝚌𝚝𝚞𝚛𝚎𝚜  ➖   ⑧
+8️⃣	 	𝚖𝚊𝚝𝚑𝚎𝚖𝚊𝚝𝚒𝚌𝚊𝚕 𝚖𝚎𝚝𝚑𝚘𝚍𝚜 𝙰	➖   ④
+9️⃣	 	𝚖𝚊𝚝𝚑𝚎𝚖𝚊𝚝𝚒𝚌𝚊𝚕 𝚖𝚎𝚝𝚑𝚘𝚍𝚜 𝙱  ➖   ⑥
 🧮   ⑥②""")
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
@@ -301,7 +301,7 @@ async def it_second_catalog(call: CallbackQuery, state: FSMContext):
 @dp.callback_query_handler(cd_faculty.filter(faculty="cie"), state=FSMMenu.second_lvl)
 async def cie_second_catalog(call: CallbackQuery, state: FSMContext):
     await call.message.answer("""
-                №	    subjects    	credits\n
+                 𝙽𝚘     𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜        𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
 1️⃣      Physics II ➖   ⑥
 2️⃣	    Fundam. of Eng. Thermodynamics and heat transfer    ➖   ⑧
 3️⃣	 	Science & Technology of Materials (CIV) ➖   ⑥
