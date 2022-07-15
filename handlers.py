@@ -304,8 +304,8 @@ async def cie_second_catalog(call: CallbackQuery, state: FSMContext):
                  𝙽𝚘     𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜        𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
 1️⃣      𝚙𝚑𝚢𝚜𝚒𝚌𝚜 𝚒𝚒 ➖   ⑥
 2️⃣	    𝚏𝚞𝚗𝚍𝚊𝚖. 𝚘𝚏 𝚎𝚗𝚐. 𝚝𝚑𝚎𝚛𝚖𝚘𝚍𝚢𝚗𝚊𝚖𝚒𝚌𝚜 𝚊𝚗𝚍 𝚑𝚎𝚊𝚝 𝚝𝚛𝚊𝚗𝚜𝚏𝚎𝚛    ➖   ⑧
-3️⃣	 	𝚜𝚌𝚒𝚎𝚗𝚌𝚎 & 𝚝𝚎𝚌𝚑𝚗𝚘𝚕𝚘𝚐𝚢 𝚘𝚏 𝚖𝚊𝚝𝚎𝚛𝚒𝚊𝚕𝚜 (𝚌𝚒𝚟) ➖   ⑥
-4️⃣	 	𝚐𝚎𝚘𝚕𝚘𝚐𝚢 / 𝚜𝚊𝚏𝚎𝚝𝚢 𝚊𝚗𝚍 𝚌𝚒𝚟𝚒𝚕 𝚙𝚛𝚘𝚝𝚎𝚌𝚝𝚒𝚘𝚗   ➖   ⑧
+3️⃣	 	    𝚜𝚌𝚒𝚎𝚗𝚌𝚎 & 𝚝𝚎𝚌𝚑𝚗𝚘𝚕𝚘𝚐𝚢 𝚘𝚏 𝚖𝚊𝚝𝚎𝚛𝚒𝚊𝚕𝚜 (𝚌𝚒𝚟) ➖   ⑥
+4️⃣	 	    𝚐𝚎𝚘𝚕𝚘𝚐𝚢 / 𝚜𝚊𝚏𝚎𝚝𝚢 𝚊𝚗𝚍 𝚌𝚒𝚟𝚒𝚕 𝚙𝚛𝚘𝚝𝚎𝚌𝚝𝚒𝚘𝚗   ➖   ⑧
 5️⃣	    𝚊𝚗𝚊𝚕𝚢𝚝𝚒𝚌𝚊𝚕 𝚖𝚎𝚌𝚑𝚊𝚗𝚒𝚌𝚜    ➖   ⑧
 6️⃣	    𝚜𝚝𝚊𝚝𝚒𝚜𝚝𝚒𝚌𝚊𝚕 𝚖𝚎𝚝𝚑𝚘𝚍𝚜 𝚏𝚘𝚛 𝚎𝚗𝚐𝚒𝚗𝚎𝚎𝚛𝚒𝚗𝚐 ➖   ④
 7️⃣	    𝚜𝚝𝚛𝚞𝚌𝚝𝚞𝚛𝚊𝚕 𝚖𝚎𝚌𝚑𝚊𝚗𝚒𝚌𝚜    ➖   ⑫
@@ -324,21 +324,21 @@ async def back_second_catalog(call: CallbackQuery, state: FSMContext):
 
 @dp.callback_query_handler(cd_faculty.filter(faculty=["me"]), state=FSMMenu.third_lvl)
 async def me_third_catalog(call: CallbackQuery, state: FSMContext):
-    await call.message.answer('here will be ME CAtaLOG for 3rd lvl')
+    await call.message.answer('here will be ME catalog for 3rd lvl')
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 
 
 @dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.third_lvl)
 async def it_third_catalog(call: CallbackQuery, state: FSMContext):
-    await call.message.answer('here will be IT CAtaLOG for 3rd lvl')
+    await call.message.answer('here will be IT catalog for 3rd lvl')
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 
 
 @dp.callback_query_handler(cd_faculty.filter(faculty="cie"), state=FSMMenu.third_lvl)
 async def cie_third_catalog(call: CallbackQuery, state: FSMContext):
-    await call.message.answer('here will be CIE CAtaLOG for 3rd lvl')
+    await call.message.answer('here will be CIE catalog for 3rd lvl')
     await call.message.edit_reply_markup(reply_markup=None)
     await state.finish()
 
