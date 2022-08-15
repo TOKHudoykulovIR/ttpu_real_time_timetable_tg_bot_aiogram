@@ -171,34 +171,41 @@ async def groups_year_19(call: CallbackQuery):
 #     await message.answer("choose category ↘︎", reply_markup=menu_keyboard)
 
 
-@dp.callback_query_handler(cd_course.filter(course="py"))
-async def py_catalog(call: CallbackQuery):
-    await call.message.answer_photo(photo=open("levels/py.png", "rb"))
+@dp.callback_query_handler(cd_course.filter(course=["py", "first_lvl", "second_lvl", "third_lvl"]))
+async def catalog(call: CallbackQuery):
+    if str(call.data)[14:] == "py":
+        await call.message.answer_photo(photo=open("levels/py.png", "rb"))
+    elif str(call.data)[14:] == "first_lvl":
+        await call.message.answer_photo(photo=open("levels/st_level.png", "rb"))
+    elif str(call.data)[14:] == "second_lvl":
+        await call.message.answer_photo(photo=open("levels/nd_level.png", "rb"))
+    elif str(call.data)[14:] == "third_lvl":
+        await call.message.answer_photo(photo=open("levels/rd_level.png", "rb"))
     await call.message.edit_reply_markup(reply_markup=None)
 
 
-@dp.callback_query_handler(cd_course.filter(course="first_lvl"))
-async def first_lvl_catalog(call: CallbackQuery):
-    # await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴︎ 𝙵𝙰𝙲𝚄𝙻𝚃𝚈', reply_markup=faculty_keyboard)
-    await call.message.answer_photo(photo=open("levels/st_level.png", "rb"))
-    await call.message.edit_reply_markup(reply_markup=None)
-    # await FSMMenu.first_lvl.set()
-
-
-@dp.callback_query_handler(cd_course.filter(course=["second_lvl"]))
-async def second_lvl_catalog(call: CallbackQuery):
-    # await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴︎ 𝙵𝙰𝙲𝚄𝙻𝚃𝚈', reply_markup=faculty_keyboard)
-    await call.message.answer_photo(photo=open("levels/nd_level.png", "rb"))
-    await call.message.edit_reply_markup(reply_markup=None)
-    # await FSMMenu.second_lvl.set()
-
-
-@dp.callback_query_handler(cd_course.filter(course=["third_lvl"]))
-async def third_lvl_catalog(call: CallbackQuery):
-    # await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴︎ 𝙵𝙰𝙲𝚄𝙻𝚃𝚈', reply_markup=faculty_keyboard)
-    await call.message.answer_photo(photo=open("levels/rd_level.png", "rb"))
-    await call.message.edit_reply_markup(reply_markup=None)
-    # await FSMMenu.third_lvl.set()
+# @dp.callback_query_handler(cd_course.filter(course="first_lvl"))
+# async def first_lvl_catalog(call: CallbackQuery):
+#     # await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴︎ 𝙵𝙰𝙲𝚄𝙻𝚃𝚈', reply_markup=faculty_keyboard)
+#     await call.message.answer_photo(photo=open("levels/st_level.png", "rb"))
+#     await call.message.edit_reply_markup(reply_markup=None)
+#     # await FSMMenu.first_lvl.set()
+#
+#
+# @dp.callback_query_handler(cd_course.filter(course=["second_lvl"]))
+# async def second_lvl_catalog(call: CallbackQuery):
+#     # await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴︎ 𝙵𝙰𝙲𝚄𝙻𝚃𝚈', reply_markup=faculty_keyboard)
+#     await call.message.answer_photo(photo=open("levels/nd_level.png", "rb"))
+#     await call.message.edit_reply_markup(reply_markup=None)
+#     # await FSMMenu.second_lvl.set()
+#
+#
+# @dp.callback_query_handler(cd_course.filter(course=["third_lvl"]))
+# async def third_lvl_catalog(call: CallbackQuery):
+#     # await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴︎ 𝙵𝙰𝙲𝚄𝙻𝚃𝚈', reply_markup=faculty_keyboard)
+#     await call.message.answer_photo(photo=open("levels/rd_level.png", "rb"))
+#     await call.message.edit_reply_markup(reply_markup=None)
+#     # await FSMMenu.third_lvl.set()
 
 
 @dp.callback_query_handler(cd_course.filter(course=["back"]))
