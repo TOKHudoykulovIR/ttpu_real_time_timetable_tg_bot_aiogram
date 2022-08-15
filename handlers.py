@@ -206,5 +206,7 @@ async def contacts(call: CallbackQuery):
         await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟹0-𝟽𝟹')
     elif str(call.data)[18:] == "medical":
         await call.message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈︎", reply_markup=menu_keyboard)
+    elif str(call.data)[18:] == "back":
+        await call.message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈︎", reply_markup=menu_keyboard)
 
     await call.message.edit_reply_markup(reply_markup=None)
