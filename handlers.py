@@ -36,8 +36,11 @@ async def stats(message: types.Message):
         # dataset = await (get_info())
         # await message.answer(dataset)
         await (get_info())
+        print("staRT")
+        print(open("usage_history.csv", "rb"))
         await message.answer_document(open("usage_history.csv", "rb"))
         await message.answer_document(open("users_list.csv", "rb"))
+        print("finish")
 
 
 @dp.message_handler(commands=['help'], state="*")
