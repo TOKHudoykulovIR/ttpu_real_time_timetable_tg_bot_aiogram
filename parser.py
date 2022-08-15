@@ -24,15 +24,12 @@ async def parse(class_, call):
     # driver = webdriver.Chrome(executable_path="/Users/tokhir/Documents/parsers/SeleniumDrivers/chromedriver2")
 
     driver.get("https://ttpu.edupage.org/timetable/")
-    time.sleep(1)
-    driver.get("https://ttpu.edupage.org/timetable/")
-    time.sleep(1)
-    # await call.message.answer("finish get url")
     print("open")
+
     # to delete msg after some period of time  STEP-2
     # asyncio.create_task(delete_later(msg, 1))
 
-    # driver.refresh()
+    driver.refresh()
     time.sleep(2)
     print("refresh")
 
