@@ -174,12 +174,16 @@ async def groups_year_19(call: CallbackQuery):
 @dp.callback_query_handler(cd_course.filter(course=["py", "first_lvl", "second_lvl", "third_lvl"]))
 async def catalog(call: CallbackQuery):
     if str(call.data)[2:] == "py":
+        await call.message.answer('py')
         await call.message.answer_photo(photo=open("levels/py.png", "rb"))
     elif str(call.data)[2:] == "first_lvl":
+        await call.message.answer('first_lvl')
         await call.message.answer_photo(photo=open("levels/st_level.png", "rb"))
     elif str(call.data)[2:] == "second_lvl":
+        await call.message.answer('second_lvl')
         await call.message.answer_photo(photo=open("levels/nd_level.png", "rb"))
     elif str(call.data)[2:] == "third_lvl":
+        await call.message.answer('third_lvl')
         await call.message.answer_photo(photo=open("levels/rd_level.png", "rb"))
     await call.message.edit_reply_markup(reply_markup=None)
 
@@ -190,7 +194,7 @@ async def catalog(call: CallbackQuery):
 #     await call.message.answer_photo(photo=open("levels/st_level.png", "rb"))
 #     await call.message.edit_reply_markup(reply_markup=None)
 #     # await FSMMenu.first_lvl.set()
-#
+
 #
 # @dp.callback_query_handler(cd_course.filter(course=["second_lvl"]))
 # async def second_lvl_catalog(call: CallbackQuery):
