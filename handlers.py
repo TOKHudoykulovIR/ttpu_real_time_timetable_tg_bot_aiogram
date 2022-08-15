@@ -33,14 +33,9 @@ async def stats(message: types.Message):
     admin_id = os.getenv("admin_id")
     if int(message.from_user.id) == int(admin_id):
         await message.answer("<𝙰𝙳𝙼𝙸𝙽 𝙼𝙾𝙳𝙴>")
-        # dataset = await (get_info())
-        # await message.answer(dataset)
         await (get_info())
-        print("staRT")
-        print(open("usage_history.csv", "rb"))
         await message.answer_document(open("usage_history.csv", "rb"))
         await message.answer_document(open("users_list.csv", "rb"))
-        print("finish")
 
 
 @dp.message_handler(commands=['help'], state="*")
@@ -71,23 +66,15 @@ async def show_keyboard_levels(message: types.Message):
 
 #                                           & & &
 
-@dp.callback_query_handler(cd_menu.filter(category="timetable"))
-async def timetable(call: CallbackQuery):
-    await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝚈𝙴𝙰𝚁 𝙾𝙵 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙾 𝚃𝙷𝙴 𝚄𝙽𝙸𝚅𝙴𝚁𝚂𝙸𝚃𝚈...', reply_markup=keyboard_years)
+@dp.callback_query_handler(cd_menu.filter(category=["timetable", "catalog", "contacts"]))
+async def menu(call: CallbackQuery):
+    if str(call.data)[5:] == "timetable":
+        await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝚈𝙴𝙰𝚁 𝙾𝙵 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙾 𝚃𝙷𝙴 𝚄𝙽𝙸𝚅𝙴𝚁𝚂𝙸𝚃𝚈...', reply_markup=keyboard_years)
+    elif str(call.data)[5:] == "catalog":
+        await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝙻𝙴𝚅𝙴𝙻', reply_markup=course_keyboard)
+    elif str(call.data)[5:] == "contacts":
+        await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙾𝙽𝚃𝙰𝙲𝚃', reply_markup=tel_numbers_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_menu.filter(category="catalog"))
-async def catalog(call: CallbackQuery):
-    await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝙻𝙴𝚅𝙴𝙻', reply_markup=course_keyboard)
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_menu.filter(category="contacts"))
-async def contacts(call: CallbackQuery):
-    await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙾𝙽𝚃𝙰𝙲𝚃', reply_markup=tel_numbers_keyboard)
-    await call.message.edit_reply_markup(reply_markup=None)
-
 
 #  > > >  FILTER BY YEARS
 @dp.callback_query_handler(cd_years.filter(year="20"), state="*")
@@ -188,30 +175,6 @@ async def catalog(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=None)
 
 
-# @dp.callback_query_handler(cd_course.filter(course="first_lvl"))
-# async def first_lvl_catalog(call: CallbackQuery):
-#     # await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴︎ 𝙵𝙰𝙲𝚄𝙻𝚃𝚈', reply_markup=faculty_keyboard)
-#     await call.message.answer_photo(photo=open("levels/st_level.png", "rb"))
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     # await FSMMenu.first_lvl.set()
-
-#
-# @dp.callback_query_handler(cd_course.filter(course=["second_lvl"]))
-# async def second_lvl_catalog(call: CallbackQuery):
-#     # await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴︎ 𝙵𝙰𝙲𝚄𝙻𝚃𝚈', reply_markup=faculty_keyboard)
-#     await call.message.answer_photo(photo=open("levels/nd_level.png", "rb"))
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     # await FSMMenu.second_lvl.set()
-#
-#
-# @dp.callback_query_handler(cd_course.filter(course=["third_lvl"]))
-# async def third_lvl_catalog(call: CallbackQuery):
-#     # await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴︎ 𝙵𝙰𝙲𝚄𝙻𝚃𝚈', reply_markup=faculty_keyboard)
-#     await call.message.answer_photo(photo=open("levels/rd_level.png", "rb"))
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     # await FSMMenu.third_lvl.set()
-
-
 @dp.callback_query_handler(cd_course.filter(course=["back"]))
 async def back_catalog(call: CallbackQuery):
     await call.message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈︎", reply_markup=menu_keyboard)
@@ -223,8 +186,7 @@ async def back_catalog(call: CallbackQuery):
         "rector", "finance", "accounting", "hr",
         "post", "strategy", "inter", "it-dep",
         "marketing", "deans", "working-youth", "irc",
-        "sport", "medical"
-    ]))
+        "sport", "medical"]))
 async def contacts(call: CallbackQuery):
     if str(call.data)[18:] == "rector":
         await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟽0-𝟾𝟸')
