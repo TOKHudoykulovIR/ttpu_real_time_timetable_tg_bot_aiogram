@@ -80,7 +80,7 @@ async def menu(call: CallbackQuery):
 
 
 #  > > >  FILTER BY YEARS
-@dp.callback_query_handler(cd_years.filter(year=["20", "19"]), state="*")
+@dp.callback_query_handler(cd_years.filter(year=["20", "19", "back"]), state="*")
 async def admission_years(call: CallbackQuery):
     if str(call.data)[5:] == "20":
         await call.message.answer(
@@ -94,12 +94,9 @@ async def admission_years(call: CallbackQuery):
             '‹𝙾𝙽 𝙰𝚅𝙴𝚁𝙰𝙶𝙴 𝚈𝙾𝚄 𝚆𝙸𝙻𝙻 𝚁𝙴𝙲𝙴𝙸𝚅𝙴 𝙰𝙽 𝙰𝙽𝚂𝚆𝙴𝚁 𝚆𝙸𝚃𝙷𝙸𝙽 𝟷𝟶 𝚂𝙴𝙲𝙾𝙽𝙳𝚂 ⏱›\n'
             '❗❗❗️️ 𝙸𝙵 𝚈𝙾𝚄 𝙶𝙴𝚃 𝙰𝙽 𝙸𝙽𝙲𝙾𝚁𝚁𝙴𝙲𝚃 𝙰𝙽𝚂𝚆𝙴𝚁, 𝚃𝚁𝚈 𝙰𝙶𝙰𝙸𝙽 ❗❗❗️',
             reply_markup=keyboard_2019)
-    await call.message.edit_reply_markup(reply_markup=None)
+    elif str(call.data)[5:] == "back":
+        await call.message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈︎", reply_markup=menu_keyboard)
 
-
-@dp.callback_query_handler(cd_years.filter(year=["back"]), state="*")
-async def back_main(call: CallbackQuery):
-    await call.message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈︎", reply_markup=menu_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
 
 
@@ -152,7 +149,7 @@ async def groups_year_19(call: CallbackQuery):
 #     await message.answer("choose category ↘︎", reply_markup=menu_keyboard)
 
 
-@dp.callback_query_handler(cd_course.filter(course=["py", "first_lvl", "second_lvl", "third_lvl"]))
+@dp.callback_query_handler(cd_course.filter(course=["py", "first_lvl", "second_lvl", "third_lvl", "back"]))
 async def catalog(call: CallbackQuery):
     if str(call.data)[2:] == "py":
         await call.message.answer('py')
@@ -166,12 +163,8 @@ async def catalog(call: CallbackQuery):
     elif str(call.data)[2:] == "third_lvl":
         await call.message.answer('third_lvl')
         await call.message.answer_photo(photo=open("levels/rd_level.png", "rb"))
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_course.filter(course=["back"]))
-async def back_catalog(call: CallbackQuery):
-    await call.message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈︎", reply_markup=menu_keyboard)
+    elif str(call.data)[2:] == "back":
+        await call.message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈︎", reply_markup=menu_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
 
 
@@ -180,7 +173,8 @@ async def back_catalog(call: CallbackQuery):
         "rector", "finance", "accounting", "hr",
         "post", "strategy", "inter", "it-dep",
         "marketing", "deans", "working-youth", "irc",
-        "sport", "medical"]))
+        "sport", "medical",
+        "back"]))
 async def contacts(call: CallbackQuery):
     if str(call.data)[18:] == "rector":
         await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟽0-𝟾𝟸')
@@ -210,10 +204,7 @@ async def contacts(call: CallbackQuery):
         await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟻0-𝟽𝟿')
     elif str(call.data)[18:] == "medical":
         await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟹0-𝟽𝟹')
-    await call.message.edit_reply_markup(reply_markup=None)
+    elif str(call.data)[18:] == "medical":
+        await call.message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈︎", reply_markup=menu_keyboard)
 
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="back"))
-async def back(call: CallbackQuery):
-    await call.message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈︎", reply_markup=menu_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
