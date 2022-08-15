@@ -24,26 +24,27 @@ async def parse(class_, call):
     # driver = webdriver.Chrome(executable_path="/Users/tokhir/Documents/parsers/SeleniumDrivers/chromedriver2")
 
     driver.get("https://ttpu.edupage.org/timetable/")
-    driver.implicitly_wait(15)
-
+    time.sleep(1)
+    driver.get("https://ttpu.edupage.org/timetable/")
+    time.sleep(1)
+    # await call.message.answer("finish get url")
     print("open")
     # to delete msg after some period of time  STEP-2
     # asyncio.create_task(delete_later(msg, 1))
 
-    driver.refresh()
-    await call.message.answer("𝟹, 𝟸, 𝟷 ...")
-    # time.sleep(2)
-    time.sleep(1)
+    # driver.refresh()
+    time.sleep(2)
     print("refresh")
 
-    classes_btn = driver.find_element(
-        by=By.XPATH,
-        value='/html/body/div[2]/div/div/div[1]/div/div/div[1]/div[1]/div[1]/span[1]')
-    classes_btn.click()
-
-    time.sleep(1)
+    driver.find_element(by=By.XPATH,
+                        value='/html/body/div[2]/div/div/div[1]/div/div/div[1]/div[1]/div[1]/span[1]').click()
+    print("click <list of groups> btn")
+    # time.sleep(2)
+    await call.message.answer("𝟹, 𝟸, 𝟷 ...")
 
     classes = driver.find_elements(by=By.CSS_SELECTOR, value=".dropDownPanel.asc-context-menu a")
+
+    time.sleep(1)
 
     counter = 0
     print(class_)
@@ -58,7 +59,7 @@ async def parse(class_, call):
     # await call.message.answer("...")
     # asyncio.create_task(delete_later(msg, 1))
 
-    time.sleep(0.2)
+    # time.sleep(1)
     driver.set_window_size(700, 770)
     driver.save_screenshot('image.png')
     driver.close()

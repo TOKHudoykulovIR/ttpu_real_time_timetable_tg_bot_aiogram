@@ -2,9 +2,20 @@ from aiogram import Bot, Dispatcher, executor
 import os
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from dotenv import load_dotenv
-from sqlite import sql_start
+from sql import sql_start
+from aiogram.types import BotCommand
 
 load_dotenv()
+
+
+async def set_commands(bot: Bot):
+    commands = [
+        BotCommand(command="/help", description="Get Instructions"),
+        BotCommand(command="/start", description="Get Timetable"),
+        BotCommand(command="/menu", description="Open menu"),
+    ]
+    await bot.set_my_commands(commands)
+
 
 storage = MemoryStorage()
 
@@ -17,9 +28,12 @@ dp = Dispatcher(bot, storage=storage)
 async def on_startup(dp):
     sql_start()
     print(">>>")
+    await set_commands(bot)
+
 
 if __name__ == '__main__':
     print(">")
     from handlers import dp
+
     print(">>")
     executor.start_polling(dp, on_startup=on_startup)

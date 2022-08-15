@@ -1,7 +1,7 @@
 from aiogram import Dispatcher, types
 from aiogram.dispatcher import FSMContext
 import os
-from sqlite import get_info
+from sql import get_info
 
 
 async def stats(message: types.Message, state: FSMContext):
