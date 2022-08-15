@@ -69,38 +69,32 @@ async def show_keyboard_levels(message: types.Message):
 @dp.callback_query_handler(cd_menu.filter(category=["timetable", "catalog", "contacts"]))
 async def menu(call: CallbackQuery):
     if str(call.data)[5:] == "timetable":
-        await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝚈𝙴𝙰𝚁 𝙾𝙵 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙾 𝚃𝙷𝙴 𝚄𝙽𝙸𝚅𝙴𝚁𝚂𝙸𝚃𝚈...', reply_markup=keyboard_years)
+        await call.message.answer(
+            '𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝚈𝙴𝙰𝚁 𝙾𝙵 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙾 𝚃𝙷𝙴 𝚄𝙽𝙸𝚅𝙴𝚁𝚂𝙸𝚃𝚈...',
+            reply_markup=keyboard_years)
     elif str(call.data)[5:] == "catalog":
         await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝙻𝙴𝚅𝙴𝙻', reply_markup=course_keyboard)
     elif str(call.data)[5:] == "contacts":
         await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙾𝙽𝚃𝙰𝙲𝚃', reply_markup=tel_numbers_keyboard)
     await call.message.edit_reply_markup(reply_markup=None)
 
+
 #  > > >  FILTER BY YEARS
-@dp.callback_query_handler(cd_years.filter(year="20"), state="*")
-async def year_20(call: CallbackQuery):
-    await call.message.answer('𝟸𝟶𝟸𝟶 𝚈𝙴𝙰𝚁 𝙶𝚁𝙾𝚄𝙿𝚂\n'
-                              '‹𝙾𝙽 𝙰𝚅𝙴𝚁𝙰𝙶𝙴 𝚈𝙾𝚄 𝚆𝙸𝙻𝙻 𝚁𝙴𝙲𝙴𝙸𝚅𝙴 𝙰𝙽 𝙰𝙽𝚂𝚆𝙴𝚁 𝚆𝙸𝚃𝙷𝙸𝙽 𝟷𝟶 𝚂𝙴𝙲𝙾𝙽𝙳𝚂 ⏱›\n'
-                              '❗❗❗️️ 𝙸𝙵 𝚈𝙾𝚄 𝙶𝙴𝚃 𝙰𝙽 𝙸𝙽𝙲𝙾𝚁𝚁𝙴𝙲𝚃 𝙰𝙽𝚂𝚆𝙴𝚁, 𝚃𝚁𝚈 𝙰𝙶𝙰𝙸𝙽 ❗❗❗️',
-                              reply_markup=keyboard_2020)
+@dp.callback_query_handler(cd_years.filter(year=["20", "19"]), state="*")
+async def admission_years(call: CallbackQuery):
+    if str(call.data)[5:] == "20":
+        await call.message.answer(
+            '𝟸𝟶𝟸𝟶 𝚈𝙴𝙰𝚁 𝙶𝚁𝙾𝚄𝙿𝚂\n'
+            '‹𝙾𝙽 𝙰𝚅𝙴𝚁𝙰𝙶𝙴 𝚈𝙾𝚄 𝚆𝙸𝙻𝙻 𝚁𝙴𝙲𝙴𝙸𝚅𝙴 𝙰𝙽 𝙰𝙽𝚂𝚆𝙴𝚁 𝚆𝙸𝚃𝙷𝙸𝙽 𝟷𝟶 𝚂𝙴𝙲𝙾𝙽𝙳𝚂 ⏱›\n'
+            '❗❗❗️️ 𝙸𝙵 𝚈𝙾𝚄 𝙶𝙴𝚃 𝙰𝙽 𝙸𝙽𝙲𝙾𝚁𝚁𝙴𝙲𝚃 𝙰𝙽𝚂𝚆𝙴𝚁, 𝚃𝚁𝚈 𝙰𝙶𝙰𝙸𝙽 ❗❗❗️',
+            reply_markup=keyboard_2020)
+    elif str(call.data)[5:] == "19":
+        await call.message.answer(
+            '𝟸𝟶𝟷𝟿 𝚈𝙴𝙰𝚁 𝙶𝚁𝙾𝚄𝙿𝚂\n'
+            '‹𝙾𝙽 𝙰𝚅𝙴𝚁𝙰𝙶𝙴 𝚈𝙾𝚄 𝚆𝙸𝙻𝙻 𝚁𝙴𝙲𝙴𝙸𝚅𝙴 𝙰𝙽 𝙰𝙽𝚂𝚆𝙴𝚁 𝚆𝙸𝚃𝙷𝙸𝙽 𝟷𝟶 𝚂𝙴𝙲𝙾𝙽𝙳𝚂 ⏱›\n'
+            '❗❗❗️️ 𝙸𝙵 𝚈𝙾𝚄 𝙶𝙴𝚃 𝙰𝙽 𝙸𝙽𝙲𝙾𝚁𝚁𝙴𝙲𝚃 𝙰𝙽𝚂𝚆𝙴𝚁, 𝚃𝚁𝚈 𝙰𝙶𝙰𝙸𝙽 ❗❗❗️',
+            reply_markup=keyboard_2019)
     await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_years.filter(year="19"), state="*")
-async def year_19(call: CallbackQuery):
-    await call.message.answer('𝟸𝟶𝟷𝟿 𝚈𝙴𝙰𝚁 𝙶𝚁𝙾𝚄𝙿𝚂\n'
-                              '‹𝙾𝙽 𝙰𝚅𝙴𝚁𝙰𝙶𝙴 𝚈𝙾𝚄 𝚆𝙸𝙻𝙻 𝚁𝙴𝙲𝙴𝙸𝚅𝙴 𝙰𝙽 𝙰𝙽𝚂𝚆𝙴𝚁 𝚆𝙸𝚃𝙷𝙸𝙽 𝟷𝟶 𝚂𝙴𝙲𝙾𝙽𝙳𝚂 ⏱›\n'
-                              '❗❗❗️️ 𝙸𝙵 𝚈𝙾𝚄 𝙶𝙴𝚃 𝙰𝙽 𝙸𝙽𝙲𝙾𝚁𝚁𝙴𝙲𝚃 𝙰𝙽𝚂𝚆𝙴𝚁, 𝚃𝚁𝚈 𝙰𝙶𝙰𝙸𝙽 ❗❗❗️',
-                              reply_markup=keyboard_2019)
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-# @dp.callback_query_handler(Text(equals='yyyy:18'))
-# async def year_18(call: CallbackQuery):
-#     await call.message.answer('𝟸𝟶𝟷𝟾 𝚈𝙴𝙰𝚁 𝙶𝚁𝙾𝚄𝙿𝚂\n'
-#                               "‹𝚈𝙾𝚄 𝚆𝙸𝙻𝙻 𝚁𝙴𝙲𝙴𝙸𝚅𝙴 𝙰𝙽 𝙰𝙽𝚂𝚆𝙴𝚁 𝚆𝙸𝚃𝙷𝙸𝙽 𝟷𝟶 𝚂𝙴𝙲𝙾𝙽𝙳𝚂⏱...›",
-#                               reply_markup=keyboard_2018)
-#     await call.message.edit_reply_markup(reply_markup=None)
 
 
 @dp.callback_query_handler(cd_years.filter(year=["back"]), state="*")
@@ -136,7 +130,7 @@ async def parse_data(call):
         "1IT4-20", "1IT7-20", "1IT1-20", "1IT2-20", "1IT3-20", "1IT5-20",
         "1IT6-20",
         "1.ME1-2-20", "1.ME3-4-20",
-        "1CIE1-2-20",]))
+        "1CIE1-2-20", ]))
 async def groups_year_20(call: CallbackQuery):
     await parse_data(call)
 
