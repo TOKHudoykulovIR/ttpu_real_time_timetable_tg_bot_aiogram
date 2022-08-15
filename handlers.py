@@ -149,8 +149,7 @@ async def parse_data(call):
         "1IT4-20", "1IT7-20", "1IT1-20", "1IT2-20", "1IT3-20", "1IT5-20",
         "1IT6-20",
         "1.ME1-2-20", "1.ME3-4-20",
-        "1CIE1-2-20",
-    ]))
+        "1CIE1-2-20",]))
 async def groups_year_20(call: CallbackQuery):
     await parse_data(call)
 
@@ -159,8 +158,7 @@ async def groups_year_20(call: CallbackQuery):
     group=[
         "2IT1-19", "2IT2-19", "2IT3-19", "2IT4-19", "2IT5-19", "2IT6-19",
         "2.ME1-19", "2.ME2-19", "2.ME3-19", "2.ME4-19", "2.ME5-19", "2.ME6-19",
-        "2CIE2-19", "2CIE2-19"
-    ]))
+        "2CIE2-19", "2CIE2-19"]))
 async def groups_year_19(call: CallbackQuery):
     await parse_data(call)
 
@@ -209,235 +207,42 @@ async def back_catalog(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=None)
 
 
-# @dp.callback_query_handler(cd_faculty.filter(faculty=["me"]), state=FSMMenu.first_lvl)
-# async def me_first_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer("""
-#                 𝙽𝚘      𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜        𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
-# 1️⃣	    𝚌𝚑𝚎𝚖𝚒𝚜𝚝𝚛𝚢   ➖   ⑧
-# 2️⃣	    𝚖𝚊𝚝𝚑. 𝚊𝚗𝚊𝚕𝚢𝚜𝚒𝚜 𝙸    ➖   ⑩
-# 3️⃣	    𝚌𝚘𝚖𝚙𝚞𝚝𝚎𝚛 𝚜𝚌𝚒𝚎𝚗𝚌𝚎    ➖   ⑧
-# 4️⃣	    𝚕𝚒𝚗. 𝚊𝚕𝚐𝚎𝚋𝚛𝚊 𝚊𝚗𝚍 𝚐𝚎𝚘𝚖𝚎𝚝𝚛𝚢 𝙸 ➖   ⑥
-# 5️⃣	    𝚕𝚒𝚗. 𝚊𝚕𝚐𝚎𝚋𝚛𝚊 𝚊𝚗𝚍 𝚐𝚎𝚘𝚖𝚎𝚝𝚛𝚢 𝙸𝙸    ➖   ④
-# 6️⃣	    𝚙𝚑𝚢𝚜𝚒𝚌𝚜 𝙸   ➖   ⑩
-# 7️⃣	    𝚖𝚊𝚝𝚑. 𝚊𝚗𝚊𝚕𝚢𝚜𝚒𝚜 𝙸𝙸   ➖   ⑧
-# 8️⃣	    𝚎𝚗𝚐𝚒𝚗𝚎𝚎𝚛𝚒𝚗𝚐 𝚍𝚛𝚊𝚠𝚒𝚗𝚐 ➖   ⑥\n
-# 🟰   ⑥⓪
-# """)
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-#
-#
-# @dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.first_lvl)
-# async def it_first_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer("""
-#                  𝙽𝚘     𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜        𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
-# 1️⃣	    𝚌𝚑𝚎𝚖𝚒𝚜𝚝𝚛𝚢   ➖   ⑧
-# 2️⃣	    𝚖𝚊𝚝𝚑𝚎𝚖𝚊𝚝𝚒𝚌𝚊𝚕 𝚊𝚗𝚊𝚕𝚢𝚜𝚒𝚜 𝙸 ➖   ⑩
-# 3️⃣	    𝚌𝚘𝚖𝚙𝚞𝚝𝚎𝚛 𝚜𝚌𝚒𝚎𝚗𝚌𝚎    ➖   ⑧
-# 4️⃣	    𝚕𝚒𝚗𝚎𝚊𝚛 𝚊𝚕𝚐𝚎𝚋𝚛𝚊 𝚊𝚗𝚍 𝚐𝚎𝚘𝚖𝚎𝚝𝚛𝚢 𝙸   ➖   ⑥
-# 5️⃣	    𝚕𝚒𝚗𝚎𝚊𝚛 𝚊𝚕𝚐𝚎𝚋𝚛𝚊 𝚊𝚗𝚍 𝚐𝚎𝚘𝚖𝚎𝚝𝚛𝚢 𝙸𝙸  ➖   ④
-# 6️⃣	    𝚙𝚑𝚢𝚜𝚒𝚌𝚜 𝙸   ➖   ⑩
-# 7️⃣	    𝚖𝚊𝚝𝚑𝚎𝚖𝚊𝚝𝚒𝚌𝚊𝚕 𝚊𝚗𝚊𝚕𝚢𝚜𝚒𝚜 𝙸𝙸    ➖   ⑧
-# 8️⃣	    𝚊𝚕𝚐𝚘𝚛𝚒𝚝𝚑𝚖𝚜 𝚊𝚗𝚍 𝚙𝚛𝚘𝚐𝚛𝚊𝚖𝚖𝚒𝚗𝚐 𝙸    ➖   ⑥\n
-# 🟰   ⑥⓪
-# """)
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-#
-#
-# @dp.callback_query_handler(cd_faculty.filter(faculty="cie"), state=FSMMenu.first_lvl)
-# async def cie_first_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer("""
-#                 𝙽𝚘      𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜        𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
-# 1️⃣	    𝚌𝚑𝚎𝚖𝚒𝚜𝚝𝚛𝚢   ➖   ⑧
-# 2️⃣	    𝚖𝚊𝚝𝚑𝚎𝚖𝚊𝚝𝚒𝚌𝚊𝚕 𝚊𝚗𝚊𝚕𝚢𝚜𝚒𝚜 𝙸 ➖   ⑩
-# 3️⃣	    𝚌𝚘𝚖𝚙𝚞𝚝𝚎𝚛 𝚜𝚌𝚒𝚎𝚗𝚌𝚎    ➖   ⑧
-# 4️⃣	    𝚕𝚒𝚗𝚎𝚊𝚛 𝚊𝚕𝚐𝚎𝚋𝚛𝚊 𝚊𝚗𝚍 𝚐𝚎𝚘𝚖𝚎𝚝𝚛𝚢 𝙸   ➖   ⑥
-# 5️⃣	    𝚕𝚒𝚗𝚎𝚊𝚛 𝚊𝚕𝚐𝚎𝚋𝚛𝚊 𝚊𝚗𝚍 𝚐𝚎𝚘𝚖𝚎𝚝𝚛𝚢 𝙸𝙸  ➖   ④
-# 6️⃣	    𝚙𝚑𝚢𝚜𝚒𝚌𝚜 𝙸   ➖   ⑩
-# 7️⃣	    𝚖𝚊𝚝𝚑𝚎𝚖𝚊𝚝𝚒𝚌𝚊𝚕 𝚊𝚗𝚊𝚕𝚢𝚜𝚒𝚜 𝙸𝙸    ➖   ⑧
-# 8️⃣	    𝚍𝚛𝚊𝚠𝚒𝚗𝚐 ➖   ⑥\n
-# 🟰   ⑥⓪
-# """)
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-#
-#
-# @dp.callback_query_handler(cd_faculty.filter(faculty="back"), state=FSMMenu.first_lvl)
-# async def back_first_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝙻𝙴𝚅𝙴𝙻', reply_markup=course_keyboard)
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-#
-#
-# @dp.callback_query_handler(cd_faculty.filter(faculty="me"), state=FSMMenu.second_lvl)
-# async def me_second_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer("""
-#                  𝙽𝚘     𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜        𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
-# 1️⃣      𝚙𝚑𝚢𝚜𝚒𝚌𝚜 𝙸𝙸 ➖   ⑥
-# 2️⃣	    𝚏𝚞𝚗𝚍𝚊𝚖. 𝚘𝚏 𝚎𝚗𝚐. 𝚝𝚑𝚎𝚛𝚖𝚘𝚍𝚢𝚗𝚊𝚖𝚒𝚌𝚜 𝚊𝚗𝚍 𝚑𝚎𝚊𝚝 𝚝𝚛𝚊𝚗𝚜𝚏𝚎𝚛    ➖   ⑧
-# 3️⃣	    𝚎𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝𝚊𝚕 𝚜𝚝𝚊𝚝𝚒𝚜𝚝𝚒𝚌𝚜 𝚊𝚗𝚍 𝚖𝚎𝚌𝚑𝚊𝚗𝚒𝚌𝚊𝚕 𝚖𝚎𝚊𝚜𝚞𝚛𝚎𝚖𝚎𝚗𝚝𝚜 ➖   ⑥
-# 4️⃣	    𝚒𝚗𝚝𝚛𝚘𝚍𝚞𝚌𝚝𝚒𝚘𝚗 𝚝𝚘 𝚎𝚕𝚎𝚌𝚝𝚛𝚒𝚌𝚊𝚕 𝚎𝚗𝚐𝚒𝚗𝚎𝚎𝚛𝚒𝚗𝚐 / 𝚎𝚕𝚎𝚌𝚝𝚛𝚒𝚌𝚊𝚕 𝚖𝚊𝚌𝚑𝚒𝚗𝚎𝚜    ➖   ⑩
-# 5️⃣	    𝚜𝚌𝚒𝚎𝚗𝚌𝚎 & 𝚝𝚎𝚌𝚑𝚗𝚘𝚕𝚘𝚐𝚢 𝚘𝚏 𝚖𝚊𝚝𝚎𝚛𝚒𝚊𝚕𝚜 (𝚖𝚎𝚌) ➖    ⑤
-# 6️⃣	    𝚝𝚎𝚌𝚑𝚗𝚘𝚕𝚘𝚐𝚢 𝚘𝚏 𝚖𝚎𝚝𝚊𝚕𝚕𝚒𝚌 𝚖𝚊𝚝𝚎𝚛𝚒𝚊𝚕𝚜    ➖   ⑤
-# 7️⃣      𝚊𝚙𝚙𝚕𝚒𝚎𝚍 𝚖𝚎𝚌𝚑𝚊𝚗𝚒𝚌𝚜  ➖   ⑩
-# 8️⃣      f𝚞𝚗𝚍𝚊𝚖𝚎𝚗𝚝𝚊𝚕𝚜 𝚘𝚏 𝚜𝚝𝚛𝚎𝚗𝚐𝚝𝚑 𝚘𝚏 𝚖𝚊𝚝𝚎𝚛𝚒𝚊𝚕𝚜  ➖   ⑧
-# 🟰   ⑤⑧""")
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-#
-#
-# @dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.second_lvl)
-# async def it_second_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer("""
-#                  𝙽𝚘     𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜        𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
-# 1️⃣      𝚙𝚑𝚢𝚜𝚒𝚌𝚜 𝙸𝙸 ➖   ⑥
-# 2️⃣	 	𝚌𝚒𝚛𝚌𝚞𝚒𝚝 𝚝𝚑𝚎𝚘𝚛𝚢  ➖   ⑧
-# 3️⃣	 	𝚍𝚊𝚝𝚊𝚋𝚊𝚜𝚎𝚜   ➖   ⑧
-# 4️⃣	 	𝚊𝚕𝚐𝚘𝚛𝚒𝚝𝚑𝚖𝚜 𝚊𝚗𝚍 𝚙𝚛𝚘𝚐𝚛𝚊𝚖𝚖𝚒𝚗𝚐 𝙸𝙸    ➖   ⑥
-# 5️⃣	 	𝚘𝚋𝚓𝚎𝚌𝚝-𝚘𝚛𝚒𝚎𝚗𝚝𝚎𝚍 𝚙𝚛𝚘𝚐𝚛𝚊𝚖𝚖𝚒𝚗𝚐 ➖   ⑥
-# 6️⃣	 	𝚎𝚕𝚎𝚌𝚝𝚛𝚘𝚗𝚒𝚌 𝚜𝚢𝚜𝚝𝚎𝚖𝚜 𝚊𝚗𝚍 𝚝𝚎𝚌𝚑𝚗𝚘𝚕𝚘𝚐𝚒𝚎𝚜 ➖   ⑩
-# 7️⃣	 	𝚌𝚘𝚖𝚙𝚞𝚝𝚎𝚛 𝚊𝚛𝚌𝚑𝚒𝚝𝚎𝚌𝚝𝚞𝚛𝚎𝚜  ➖   ⑧
-# 8️⃣	 	𝚖𝚊𝚝𝚑𝚎𝚖𝚊𝚝𝚒𝚌𝚊𝚕 𝚖𝚎𝚝𝚑𝚘𝚍𝚜 𝙰	➖   ④
-# 9️⃣	 	𝚖𝚊𝚝𝚑𝚎𝚖𝚊𝚝𝚒𝚌𝚊𝚕 𝚖𝚎𝚝𝚑𝚘𝚍𝚜 𝙱  ➖   ⑥
-# 🟰   ⑥②""")
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-#
-#
-# @dp.callback_query_handler(cd_faculty.filter(faculty="cie"), state=FSMMenu.second_lvl)
-# async def cie_second_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer("""
-#                  𝙽𝚘     𝚜𝚞𝚋𝚓𝚎𝚌𝚝𝚜        𝚌𝚛𝚎𝚍𝚒𝚝𝚜\n
-# 1️⃣      𝚙𝚑𝚢𝚜𝚒𝚌𝚜 𝚒𝚒 ➖   ⑥
-# 2️⃣	    𝚏𝚞𝚗𝚍𝚊𝚖. 𝚘𝚏 𝚎𝚗𝚐. 𝚝𝚑𝚎𝚛𝚖𝚘𝚍𝚢𝚗𝚊𝚖𝚒𝚌𝚜 𝚊𝚗𝚍 𝚑𝚎𝚊𝚝 𝚝𝚛𝚊𝚗𝚜𝚏𝚎𝚛    ➖   ⑧
-# 3️⃣	 	    𝚜𝚌𝚒𝚎𝚗𝚌𝚎 & 𝚝𝚎𝚌𝚑𝚗𝚘𝚕𝚘𝚐𝚢 𝚘𝚏 𝚖𝚊𝚝𝚎𝚛𝚒𝚊𝚕𝚜 (𝚌𝚒𝚟) ➖   ⑥
-# 4️⃣	 	    𝚐𝚎𝚘𝚕𝚘𝚐𝚢 / 𝚜𝚊𝚏𝚎𝚝𝚢 𝚊𝚗𝚍 𝚌𝚒𝚟𝚒𝚕 𝚙𝚛𝚘𝚝𝚎𝚌𝚝𝚒𝚘𝚗   ➖   ⑧
-# 5️⃣	    𝚊𝚗𝚊𝚕𝚢𝚝𝚒𝚌𝚊𝚕 𝚖𝚎𝚌𝚑𝚊𝚗𝚒𝚌𝚜    ➖   ⑧
-# 6️⃣	    𝚜𝚝𝚊𝚝𝚒𝚜𝚝𝚒𝚌𝚊𝚕 𝚖𝚎𝚝𝚑𝚘𝚍𝚜 𝚏𝚘𝚛 𝚎𝚗𝚐𝚒𝚗𝚎𝚎𝚛𝚒𝚗𝚐 ➖   ④
-# 7️⃣	    𝚜𝚝𝚛𝚞𝚌𝚝𝚞𝚛𝚊𝚕 𝚖𝚎𝚌𝚑𝚊𝚗𝚒𝚌𝚜    ➖   ⑫
-# 8️⃣	    𝚕𝚊𝚗𝚍 𝚜𝚞𝚛𝚟𝚎𝚢𝚒𝚗𝚐  ➖   ⑧
-# 🟰   ⑤⓪""")
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-#
-#
-# @dp.callback_query_handler(cd_faculty.filter(faculty="back"), state=FSMMenu.second_lvl)
-# async def back_second_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝙻𝙴𝚅𝙴𝙻', reply_markup=course_keyboard)
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-#
-#
-# @dp.callback_query_handler(cd_faculty.filter(faculty=["me"]), state=FSMMenu.third_lvl)
-# async def me_third_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer('here will be ME catalog for 3rd lvl')
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-#
-#
-# @dp.callback_query_handler(cd_faculty.filter(faculty="it"), state=FSMMenu.third_lvl)
-# async def it_third_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer('here will be IT catalog for 3rd lvl')
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-#
-#
-# @dp.callback_query_handler(cd_faculty.filter(faculty="cie"), state=FSMMenu.third_lvl)
-# async def cie_third_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer('here will be CIE catalog for 3rd lvl')
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-#
-#
-# @dp.callback_query_handler(cd_faculty.filter(faculty="back"), state=FSMMenu.third_lvl)
-# async def back_third_catalog(call: CallbackQuery, state: FSMContext):
-#     await call.message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝙻𝙴𝚅𝙴𝙻', reply_markup=course_keyboard)
-#     await call.message.edit_reply_markup(reply_markup=None)
-#     await state.finish()
-
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="rector"))
-async def rector_contact(call: CallbackQuery):
-    await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟽0-𝟾𝟸')
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="finance"))
-async def finance_contact(call: CallbackQuery):
-    await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟷0-𝟸𝟻')
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="accounting"))
-async def accountant_contact(call: CallbackQuery):
-    await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟸0-𝟽𝟿')
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="hr"))
-async def hr_contact(call: CallbackQuery):
-    await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟸0-𝟻𝟹')
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="post"))
-async def post_contact(call: CallbackQuery):
-    await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟼0-𝟿𝟸')
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="strategy"))
-async def strategy_contact(call: CallbackQuery):
-    await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟻0-𝟿𝟸')
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="inter"))
-async def inter_contact(call: CallbackQuery):
-    await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟹0-𝟼𝟽')
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="it-dep"))
-async def it_dep_contact(call: CallbackQuery):
-    await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟼𝟹-𝟾𝟽')
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="marketing"))
-async def marketing_contact(call: CallbackQuery):
-    await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟺0-𝟾𝟽')
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="deans"))
-async def deans_contacts(call: CallbackQuery):
-    await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟾0-𝟻𝟸')
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="working-youth"))
-async def working_youth_contact(call: CallbackQuery):
-    await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟹0-𝟽𝟹')
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="irc"))
-async def irc_contact(call: CallbackQuery):
-    await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟻0-𝟹𝟸')
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="sport"))
-async def sport_contact(call: CallbackQuery):
-    await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟻0-𝟽𝟿')
-    await call.message.edit_reply_markup(reply_markup=None)
-
-
-@dp.callback_query_handler(cd_tel_num.filter(owner="medical"))
-async def med_contact(call: CallbackQuery):
-    await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟹0-𝟽𝟹')
+@dp.callback_query_handler(cd_tel_num.filter(
+    owner=[
+        "rector", "finance", "accounting", "hr",
+        "post", "strategy", "inter", "it-dep",
+        "marketing", "deans", "working-youth", "irc",
+        "sport", "medical"
+    ]))
+async def contacts(call: CallbackQuery):
+    if str(call.data)[18:] == "rector":
+        await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟽0-𝟾𝟸')
+    elif str(call.data)[18:] == "finance":
+        await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟷0-𝟸𝟻')
+    elif str(call.data)[18:] == "accounting":
+        await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟸0-𝟽𝟿')
+    elif str(call.data)[18:] == "hr":
+        await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟸0-𝟻𝟹')
+    elif str(call.data)[18:] == "post":
+        await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟼0-𝟿𝟸')
+    elif str(call.data)[18:] == "strategy":
+        await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟻0-𝟿𝟸')
+    elif str(call.data)[18:] == "inter":
+        await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟹0-𝟼𝟽')
+    elif str(call.data)[18:] == "it-dep":
+        await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟼𝟹-𝟾𝟽')
+    elif str(call.data)[18:] == "marketing":
+        await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟺0-𝟾𝟽')
+    elif str(call.data)[18:] == "deans":
+        await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟾0-𝟻𝟸')
+    elif str(call.data)[18:] == "working-youth":
+        await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟹0-𝟽𝟹')
+    elif str(call.data)[18:] == "irc":
+        await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟻0-𝟹𝟸')
+    elif str(call.data)[18:] == "sport":
+        await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟻0-𝟽𝟿')
+    elif str(call.data)[18:] == "medical":
+        await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟹0-𝟽𝟹')
     await call.message.edit_reply_markup(reply_markup=None)
 
 
