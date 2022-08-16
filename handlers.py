@@ -50,6 +50,17 @@ async def show_keyboard_levels(message: types.Message):
     await message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈", reply_markup=menu_keyboard)
 
 
+@dp.message_handler(state="*")
+async def empty(message: types.Message):
+    user_id, user_name, user_text, time = get_user_info(message)
+    await add_user(user_id, user_name, user_text, time)
+    await message.answer("𝙲𝙷𝙴𝙲𝙺 𝚃𝙷𝙴 𝚃𝙸𝙼𝙴𝚃𝙰𝙱𝙻𝙴 📋 𝙱𝚈 𝙶𝚁𝙾𝚄𝙿𝚂\n"
+
+                         "𝙸𝙽𝚂𝚃𝚄𝙲𝚃𝙸𝙾𝙽:\n"
+                         "𝟷.  𝚃𝚈𝙿𝙴 𝙾𝚁 𝙲𝙻𝙸𝙲𝙺 𝙾𝙽 /start 𝙸𝙽 𝚃𝙷𝙴 𝙼𝙴𝙽𝚄 𝙸𝙽 𝚃𝙷𝙴 𝙻𝙾𝚆𝙴𝚁 𝙻𝙴𝙵𝚃 𝙲𝙾𝚁𝙽𝙴𝚁\n"
+                         "𝟸.  𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝚈𝙴𝙰𝚁 𝙾𝙵 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙾 𝚃𝙷𝙴 𝚄𝙽𝙸𝚅𝙴𝚁𝚂𝙸𝚃𝚈\n"
+                         "𝟹.  𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿")
+
 # <<< MENU CATEGORIES >>>
 @dp.callback_query_handler(cd_menu.filter(category=["timetable", "catalog", "contacts"]))
 async def menu(call: CallbackQuery):
