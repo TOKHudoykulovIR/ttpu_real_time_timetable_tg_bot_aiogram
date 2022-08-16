@@ -12,7 +12,7 @@ def sql_start():
     # cursor = connect.cursor()
 
     cursor.execute(
-        """CREATE TABLE IF NOT EXISTS users(id INTEGER , name MESSAGE_TEXT , text MESSAGE_TEXT , time TIMESTAMP )"""
+        """CREATE TABLE IF NOT EXISTS users(id integer, name varchar , command varchar , time timestamp)"""
     )
     connect.commit()
     cursor.close()
