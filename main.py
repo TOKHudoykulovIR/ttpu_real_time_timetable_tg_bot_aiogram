@@ -1,11 +1,11 @@
 from aiogram import Bot, Dispatcher, executor
 import os
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from sql import sql_start
 from aiogram.types import BotCommand
 
-load_dotenv()
+# load_dotenv()
 
 
 async def set_commands(bot: Bot):
@@ -18,7 +18,7 @@ async def set_commands(bot: Bot):
 
 storage = MemoryStorage()
 
-API_TOKEN = os.getenv("API_TOKEN")
+API_TOKEN = os.environ.get("API_TOKEN")
 api_token = API_TOKEN
 bot = Bot(token=api_token)
 dp = Dispatcher(bot, storage=storage)

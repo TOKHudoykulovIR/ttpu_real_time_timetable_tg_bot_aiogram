@@ -31,7 +31,7 @@ def get_user_info(message):
 # <<< BASE COMMANDS >>>
 @dp.message_handler(commands=["admin"], state="*")
 async def stats(message: types.Message):
-    admin_id = os.getenv("admin_id")
+    admin_id = os.environ.get("admin_id")
     if int(message.from_user.id) == int(admin_id):
         await message.answer("<𝙰𝙳𝙼𝙸𝙽 𝙼𝙾𝙳𝙴>")
         await (get_info())
