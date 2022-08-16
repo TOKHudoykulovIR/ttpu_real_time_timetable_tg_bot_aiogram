@@ -21,7 +21,7 @@ async def add_user(id, name, command, time):
     connect = psycopg2.connect(os.environ.get("DATABASE_URL"), sslmode="require")
     # connect = sqlite3.connect("users.db")
     cursor = connect.cursor()
-    cursor.execute("INSERT INTO users VALUES(?, ?, ?, ?)", (id, name, command, time))
+    cursor.execute("INSERT INTO users (id, name, command, time) VALUES(%s, %s, %s, %s)", (id, name, command, time))
     connect.commit()
     cursor.close()
 
