@@ -9,14 +9,6 @@ from keyboards import (
     keyboard_years, keyboard_2020, keyboard_2019, cd_years, cd_2020, cd_2019, menu_keyboard, tel_numbers_keyboard,
     course_keyboard, cd_menu, cd_tel_num, cd_course
 )
-# from aiogram.dispatcher import FSMContext
-# from aiogram.dispatcher.filters.state import State, StatesGroup
-
-
-# class FSMMenu(StatesGroup):
-#     first_lvl = State()
-#     second_lvl = State()
-#     third_lvl = State()
 
 
 def get_user_info(message):
