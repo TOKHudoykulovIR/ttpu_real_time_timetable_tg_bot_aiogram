@@ -1,6 +1,6 @@
 import os
 import csv
-import sqlite3
+# import sqlite3
 import psycopg2
 
 
@@ -9,7 +9,6 @@ def sql_start():
     cursor = connect.cursor()
 
     # connect = sqlite3.connect("users.db")
-    # cursor = connect.cursor()
 
     cursor.execute(
         """CREATE TABLE IF NOT EXISTS users(id integer, name varchar , command varchar , time timestamp)"""
@@ -18,18 +17,18 @@ def sql_start():
     cursor.close()
 
 
-
-
-async def add_user(id, name, text, time):
-    connect = sqlite3.connect("users.db")
+async def add_user(id, name, command, time):
+    connect = psycopg2.connect(os.environ.get("DATABASE_URL"), sslmode="require")
+    # connect = sqlite3.connect("users.db")
     cursor = connect.cursor()
-    cursor.execute("INSERT INTO users VALUES(?, ?, ?, ?)", (id, name, text, time))
+    cursor.execute("INSERT INTO users VALUES(?, ?, ?, ?)", (id, name, command, time))
     connect.commit()
     cursor.close()
 
 
 async def get_info():
-    connect = sqlite3.connect("users.db")
+    connect = psycopg2.connect(os.environ.get("DATABASE_URL"), sslmode="require")
+    # connect = sqlite3.connect("users.db")
     cursor = connect.cursor()
     cursor.execute("SELECT * FROM users")
     with open("usage_history.csv", "w", newline='') as csv_file:
