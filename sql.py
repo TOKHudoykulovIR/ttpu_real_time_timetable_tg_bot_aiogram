@@ -42,7 +42,7 @@ async def get_info():
         # cursor.close()
         # return data
 
-    cursor.execute("SELECT id, name, count(*) as request_qty FROM users GROUP BY id")
+    cursor.execute("SELECT id, name, count(*) as request_qty FROM users GROUP BY id, name")
     with open("users_list.csv", "w", newline='') as csv_file:
         print('users list >>> converting')
 
