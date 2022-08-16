@@ -10,7 +10,7 @@ load_dotenv()
 
 async def set_commands(bot: Bot):
     commands = [
-        BotCommand(command="/start", description="Run the Bot"),
+        BotCommand(command="/start", description="Get Menu"),
         BotCommand(command="/help", description="Get Instructions"),
     ]
     await bot.set_my_commands(commands)
