@@ -4,5 +4,3 @@ venv
 __pycache__/
 .env
 users.db
-usage_history.csv
-users_list.csv
