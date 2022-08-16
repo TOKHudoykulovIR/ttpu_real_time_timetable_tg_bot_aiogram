@@ -33,15 +33,16 @@ async def parse(class_, call):
     time.sleep(2)
     print("refresh")
 
-    driver.find_element(by=By.XPATH,
-                        value='/html/body/div[2]/div/div/div[1]/div/div/div[1]/div[1]/div[1]/span[1]').click()
-    print("click <list of groups> btn")
-    # time.sleep(2)
     await call.message.answer("𝟹, 𝟸, 𝟷 ...")
+
+    driver.find_element(
+        by=By.XPATH,
+        value='/html/body/div[2]/div/div/div[1]/div/div/div[1]/div[1]/div[1]/span[1]').click()
+    print("click <list of groups> btn")
 
     classes = driver.find_elements(by=By.CSS_SELECTOR, value=".dropDownPanel.asc-context-menu a")
 
-    time.sleep(1)
+    time.sleep(0.5)
 
     counter = 0
     print(class_)
@@ -56,7 +57,6 @@ async def parse(class_, call):
     # await call.message.answer("...")
     # asyncio.create_task(delete_later(msg, 1))
 
-    # time.sleep(1)
     driver.set_window_size(700, 770)
     driver.save_screenshot('image.png')
     driver.close()

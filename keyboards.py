@@ -137,16 +137,3 @@ course_keyboard = InlineKeyboardMarkup(
     ],
     resize_keyboard=True,
 )
-
-# cd_faculty = CallbackData("f", "faculty")
-# faculty_keyboard = InlineKeyboardMarkup(
-#     inline_keyboard=[
-#         [
-#             InlineKeyboardButton(text="ME", callback_data="f:me"),
-#             InlineKeyboardButton(text="CIE", callback_data="f:cie"),
-#             InlineKeyboardButton(text="IT", callback_data="f:it")
-#         ],
-#         [InlineKeyboardButton(text="Back ⬅️", callback_data="f:back")]
-#     ],
-#     resize_keyboard=True,
-# )

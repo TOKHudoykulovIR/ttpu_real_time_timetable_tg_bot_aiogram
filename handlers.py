@@ -1,24 +1,25 @@
-from aiogram import types
-from main import dp
-from keyboards import keyboard_years, keyboard_2020, keyboard_2019, cd_years, cd_2020, cd_2019, \
-    menu_keyboard, tel_numbers_keyboard, course_keyboard, \
-    cd_menu, cd_tel_num, cd_course
-from aiogram.types import CallbackQuery
-from parser import parse
-import datetime
-from sql import add_user, get_info
 import os
+import datetime
+from aiogram import types
+from aiogram.types import CallbackQuery
+from main import dp
+from sql import add_user, get_info
+from parser import parse
+from keyboards import (
+    keyboard_years, keyboard_2020, keyboard_2019, cd_years, cd_2020, cd_2019, menu_keyboard, tel_numbers_keyboard,
+    course_keyboard, cd_menu, cd_tel_num, cd_course
+)
 # from aiogram.dispatcher import FSMContext
-from aiogram.dispatcher.filters.state import State, StatesGroup
+# from aiogram.dispatcher.filters.state import State, StatesGroup
 
 
-class FSMMenu(StatesGroup):
-    first_lvl = State()
-    second_lvl = State()
-    third_lvl = State()
+# class FSMMenu(StatesGroup):
+#     first_lvl = State()
+#     second_lvl = State()
+#     third_lvl = State()
 
 
-def data(message):
+def get_user_info(message):
     user_id = int(message.chat.id)
     user_name = str(message.chat.full_name)
     print(user_id, user_name)
@@ -27,7 +28,7 @@ def data(message):
     return user_id, user_name, user_text, time
 
 
-#                                           $ $ $ BASE COMMANDS $ $ $
+# <<< BASE COMMANDS >>>
 @dp.message_handler(commands=["admin"], state="*")
 async def stats(message: types.Message):
     admin_id = os.getenv("admin_id")
@@ -40,7 +41,7 @@ async def stats(message: types.Message):
 
 @dp.message_handler(commands=['help'], state="*")
 async def send_instruction(message: types.Message):
-    user_id, user_name, user_text, time = data(message)
+    user_id, user_name, user_text, time = get_user_info(message)
     await add_user(user_id, user_name, user_text, time)
     await message.answer("𝙲𝙷𝙴𝙲𝙺 𝚃𝙷𝙴 𝚃𝙸𝙼𝙴𝚃𝙰𝙱𝙻𝙴📋 𝙱𝚈 𝙶𝚁𝙾𝚄𝙿𝚂\n"
                          "  𝙸𝙽𝚂𝚃𝚄𝙲𝚃𝙸𝙾𝙽:\n"
@@ -51,21 +52,12 @@ async def send_instruction(message: types.Message):
 
 @dp.message_handler(commands=['start'], state="*")
 async def show_keyboard_levels(message: types.Message):
-    user_id, user_name, user_text, time = data(message)
+    user_id, user_name, user_text, time = get_user_info(message)
     await add_user(user_id, user_name, user_text, time)
     await message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈", reply_markup=menu_keyboard)
-    # await message.answer('𝙲𝙷𝙾𝙾𝚂𝙴 𝚈𝙾𝚄𝚁 𝚈𝙴𝙰𝚁 𝙾𝙵 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙾 𝚃𝙷𝙴 𝚄𝙽𝙸𝚅𝙴𝚁𝚂𝙸𝚃𝚈...',
-    #                      reply_markup=keyboard_years)
 
 
-# @dp.message_handler(commands=['menu'], state="*")
-# async def show_keyboard_categories(message: types.Message):
-#     user_id, user_name, user_text, time = data(message)
-#     await add_user(user_id, user_name, user_text, time)
-#     await message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈", reply_markup=menu_keyboard)
-
-#                                           & & &
-
+# <<< MENU CATEGORIES >>>
 @dp.callback_query_handler(cd_menu.filter(category=["timetable", "catalog", "contacts"]))
 async def menu(call: CallbackQuery):
     if str(call.data)[5:] == "timetable":
@@ -79,7 +71,7 @@ async def menu(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=None)
 
 
-#  > > >  FILTER BY YEARS
+#  <<< CHOICE OF YEAR OF ADMISSION  >>>
 @dp.callback_query_handler(cd_years.filter(year=["20", "19", "back"]), state="*")
 async def admission_years(call: CallbackQuery):
     if str(call.data)[5:] == "20":
@@ -100,7 +92,6 @@ async def admission_years(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=None)
 
 
-# CANCEL
 @dp.callback_query_handler(text_contains='cancel', state="*")
 async def cancel(call: CallbackQuery):
     # await call.answer('Cancel', show_alert=True)
@@ -110,9 +101,7 @@ async def cancel(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=None)
 
 
-#  < < <
-
-
+# <<< SCRAPE TIMETABLE >>>
 async def parse_data(call):
     clicked_btn = call.data
     await call.message.answer(f'𝚂𝙴𝙰𝚁𝙲𝙷... 🔎  {clicked_btn[3:]}')
@@ -122,6 +111,7 @@ async def parse_data(call):
     await call.message.edit_reply_markup(reply_markup=None)
 
 
+# <<< FILTER GROUPS BY YEARS >>>
 @dp.callback_query_handler(cd_2020.filter(
     group=[
         "1IT4-20", "1IT7-20", "1IT1-20", "1IT2-20", "1IT3-20", "1IT5-20",
@@ -141,14 +131,7 @@ async def groups_year_19(call: CallbackQuery):
     await parse_data(call)
 
 
-# <><><><><><><><><><><><><><><><>
-
-
-# @dp.message_handler(commands=['menu'], state="*")
-# async def menu(message: types.Message):
-#     await message.answer("choose category ↘︎", reply_markup=menu_keyboard)
-
-
+# <<< CATALOG, CHOICE >>>
 @dp.callback_query_handler(cd_course.filter(course=["py", "first_lvl", "second_lvl", "third_lvl", "back"]))
 async def catalog(call: CallbackQuery):
     if str(call.data)[2:] == "py":
@@ -168,13 +151,11 @@ async def catalog(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=None)
 
 
+# <<< CONTACTS CHOICE >>>
 @dp.callback_query_handler(cd_tel_num.filter(
     owner=[
-        "rector", "finance", "accounting", "hr",
-        "post", "strategy", "inter", "it-dep",
-        "marketing", "deans", "working-youth", "irc",
-        "sport", "medical",
-        "back"]))
+        "rector", "finance", "accounting", "hr", "post", "strategy", "inter", "it-dep",
+        "marketing", "deans", "working-youth", "irc", "sport", "medical", "back"]))
 async def contacts(call: CallbackQuery):
     if str(call.data)[18:] == "rector":
         await call.message.answer('+𝟿𝟿𝟾(𝟽𝟷)𝟸𝟺𝟼-𝟽0-𝟾𝟸')
@@ -208,5 +189,4 @@ async def contacts(call: CallbackQuery):
         await call.message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈︎", reply_markup=menu_keyboard)
     elif str(call.data)[18:] == "back":
         await call.message.answer("𝙲𝙷𝙾𝙾𝚂𝙴 𝙲𝙰𝚃𝙴𝙶𝙾𝚁𝚈︎", reply_markup=menu_keyboard)
-
     await call.message.edit_reply_markup(reply_markup=None)
