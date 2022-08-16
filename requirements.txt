@@ -5,6 +5,7 @@ async-generator==1.10
 async-timeout==4.0.2
 attrs==21.4.0
 Babel==2.9.1
+backports.zoneinfo==0.2.1
 certifi==2021.10.8
 cffi==1.15.0
 charset-normalizer==2.0.12
@@ -14,6 +15,7 @@ h11==0.13.0
 idna==3.3
 multidict==6.0.2
 outcome==1.1.0
+psycopg==3.0.16
 pycparser==2.21
 pyOpenSSL==22.0.0
 PySocks==1.7.1

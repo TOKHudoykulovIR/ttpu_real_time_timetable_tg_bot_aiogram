@@ -1,15 +1,23 @@
+import os
 import csv
 import sqlite3
+import psycopg2
 
 
 def sql_start():
-    connect = sqlite3.connect("users.db")
+    connect = psycopg2.connect(os.environ.get("DATABASE_URL"), sslmode="require")
     cursor = connect.cursor()
+
+    # connect = sqlite3.connect("users.db")
+    # cursor = connect.cursor()
+
     cursor.execute(
         """CREATE TABLE IF NOT EXISTS users(id INTEGER , name MESSAGE_TEXT , text MESSAGE_TEXT , time TIMESTAMP )"""
     )
     connect.commit()
     cursor.close()
+
+
 
 
 async def add_user(id, name, text, time):
