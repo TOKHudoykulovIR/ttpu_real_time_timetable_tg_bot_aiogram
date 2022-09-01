@@ -118,19 +118,18 @@ async def parse_data(call):
 # <<< FILTER GROUPS BY YEARS >>>
 @dp.callback_query_handler(cd_2020.filter(
     group=[
-        "1IT4-20", "1IT7-20", "1IT1-20", "1IT2-20", "1IT3-20", "1IT5-20",
-        "1IT6-20",
-        "1.ME1-2-20", "1.ME3-4-20",
-        "1CIE1-2-20", ]))
+        "IT4-20", "IT1-20", "IT2-20", "IT3-20",
+        "ME1-2-20", "ME3-4-20",
+        "CIE1-2-20", ]))
 async def groups_year_20(call: CallbackQuery):
     await parse_data(call)
 
 
 @dp.callback_query_handler(cd_2019.filter(
     group=[
-        "2IT1-19", "2IT2-19", "2IT3-19", "2IT4-19", "2IT5-19", "2IT6-19",
-        "2.ME1-19", "2.ME2-19", "2.ME3-19", "2.ME4-19", "2.ME5-19", "2.ME6-19",
-        "2CIE2-19", "2CIE2-19"]))
+        "IT1-19", "IT2-19", "IT3-19", "IT4-19", "IT5-19", "IT6-19",
+        "ME1-19", "ME2-19", "ME3-19", "ME4-19",
+        "CIE-19", ]))
 async def groups_year_19(call: CallbackQuery):
     await parse_data(call)
 
